@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HellSummerGameProject", "HellSummerGameProject\HellSummerGameProject.vcxproj", "{FD7C9A33-C2FE-4599-A5A9-1BB8DB6A76AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD7C9A33-C2FE-4599-A5A9-1BB8DB6A76AE}.Debug|x64.ActiveCfg = Debug|x64
+		{FD7C9A33-C2FE-4599-A5A9-1BB8DB6A76AE}.Debug|x64.Build.0 = Debug|x64
+		{FD7C9A33-C2FE-4599-A5A9-1BB8DB6A76AE}.Debug|x86.ActiveCfg = Debug|Win32
+		{FD7C9A33-C2FE-4599-A5A9-1BB8DB6A76AE}.Debug|x86.Build.0 = Debug|Win32
+		{FD7C9A33-C2FE-4599-A5A9-1BB8DB6A76AE}.Release|x64.ActiveCfg = Release|x64
+		{FD7C9A33-C2FE-4599-A5A9-1BB8DB6A76AE}.Release|x64.Build.0 = Release|x64
+		{FD7C9A33-C2FE-4599-A5A9-1BB8DB6A76AE}.Release|x86.ActiveCfg = Release|Win32
+		{FD7C9A33-C2FE-4599-A5A9-1BB8DB6A76AE}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0129F63D-F1B2-41FC-B050-27A71619725B}
+	EndGlobalSection
+EndGlobal
