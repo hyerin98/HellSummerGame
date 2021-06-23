@@ -1,6 +1,6 @@
-#include <SHML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(500, 500), "WINDOW");
+	sf::RenderWindow window(sf::VideoMode(500, 300), "SFML window");
 }

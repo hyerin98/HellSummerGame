@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{fd7c9a33-c2fe-4599-a5a9-1bb8db6a76ae}</ProjectGuid>
+    <ProjectGuid>{6290545f-98bd-468f-b73b-1026ad482cbe}</ProjectGuid>
     <RootNamespace>HellSummerGameProject</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
