@@ -3,32 +3,28 @@ using namespace sf;
 
 int main()
 {
-    RenderWindow window(sf::VideoMode(500, 300), "Window");
+    RenderWindow window(sf::VideoMode(500, 500), "Window");
 
-    // 사각형 오브젝트
-    // 사이즈는 100.f x 100.f
-    // 색상은 Green
-    // 위치는 100.f, 100.f
-    RectangleShape rs;
+    // 절대사이즈가 없다.
+    // Scaling
+    // texture의 사이즈를그대로 가져오기 때문에
+    // 이를 배수를 곱해서 줄이거나 늘릴 수 있음
+    Sprite sp;
+    Texture tx;
+    tx.loadFromFile("Textures/images.jfif");
 
-    // Vector2f=float 자료형 두개 짜리
-    rs.setFillColor(Color::Green);
-    rs.setSize(Vector2f(100.f, 100.f));
-    rs.setPosition(Vector2f(250.f, 250.f));
-    // 오브젝트의 중심을 set하는 함수
-    rs.setOrigin(rs.getSize() / 2.f);
+    sp.setScale(0.5f, 0.5f);
+    sp.setOrigin(tx.getSize().x / 2.f, tx.getSize().y / 2.f);
+    sp.setTexture(tx);
+    sp.setPosition(250.f, 250.f);
 
 
     while (window.isOpen())
     {
         window.clear();
+       
+        window.draw(sp);
 
-        //rs.setPosition(rs.getPosition().x + .5f, rs.getPosition().y);
-
-        // rs를 윈도우에 그려라!
-        window.draw(rs);
-
-        // 윈도우에 그린 결과물을 출력해라!
         window.display();
     }
 }
