@@ -26,3 +26,7 @@ SFML 라이브러리를 사용하여 게임 프레임워크에 대한 이해도�
 상하좌우(↑ ↓ ← →) 움직임, space bar(점프), x를 누르면 버블 공격
 ```
 * 플레이어
+
+![제목 없음](https://user-images.githubusercontent.com/71120607/123213225-b6e35480-d500-11eb-9bfb-bafb7c4596d6.png)
+```
+버블 드래곤
