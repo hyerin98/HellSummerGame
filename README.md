@@ -14,6 +14,7 @@ SFML 라이브러리를 사용하여 게임 프레임워크에 대한 이해도�
 ```
 
 ## 버블보블(Bubble Bobble)
+![bublcave](https://user-images.githubusercontent.com/71120607/123213049-83082f00-d500-11eb-8af3-4b566fefb42c.png)
 * 게임 설명
 ```
 게임 소개 : 버블 드래곤이 몬스터들을 거품(버블)을 쏘아 붙잡아서 가둔 다음, 터뜨려서 해치우는 게임
