@@ -1,20 +1,33 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <SFML/Graphics.hpp>
+#include <list>
+#include <iostream>
+
 using namespace sf;
+using namespace std;
 
 int main()
 {
     RenderWindow window(sf::VideoMode(500, 500), "Window");
     window.setFramerateLimit(60);
 
-    IntRect txSq(0, 0, 319 / 3, 424 / 4);
-    // 319 x 424
-    Texture tx; // 사진을 담고 있는 클래스
-    tx.loadFromFile("Textures/DragonFrames.png"); // 그림을 불러온 것
+    vector<Texture> txVector; // push_back을 이용하여 여기다가 넣음
 
-    Sprite sp(tx, txSq); // sprite는 사진을 가지고 움직이게 하는 거
-    sp.setScale(3.f, 3.f);
+    Texture tx;
+    char name[50];
+
+    for (int i = 32; i <= 35; ++i)
+    {
+        sprintf(name, "Textures/cookie0020x2/cookie0020x2_00%d.png\n", i);
+        tx.loadFromFile(name);
+        txVector.push_back(tx); // push_back은 리스트안에 넣어주는 역할
+    }
+    
+    Sprite sp;
 
     Clock clock;
+
+    size_t keyFrameTime = 0;
 
     while (window.isOpen())
     {
@@ -36,21 +49,11 @@ int main()
             }
         }
 
-        if (clock.getElapsedTime().asSeconds() >= 0.3f)
+        if (clock.getElapsedTime().asSeconds() > 0.2f)
         {
-            if (txSq.left >= 318 - 106)
-            {
-                txSq.left = 0;
-            }
-            else
-            {
-                txSq.left += 319 / 3;
-            }
-            sp.setTextureRect(txSq);
-
-            clock.restart(); // 0부터 다시 시작 (0.3초마다 if문 실행된다)
+            sp.setTexture(txVector.data()[++keyFrameTime % txVector.size()]);
+            clock.restart();
         }
-
         window.draw(sp);
         window.display();
     }
