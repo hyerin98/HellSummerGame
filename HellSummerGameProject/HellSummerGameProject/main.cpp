@@ -1,60 +1,26 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <SFML/Graphics.hpp>
-#include <vector>
-#include <iostream>
-
 using namespace sf;
-using namespace std;
 
 int main()
 {
-	RenderWindow window(VideoMode(500, 500), "Window");
-	window.setFramerateLimit(60);
+    RenderWindow window(sf::VideoMode(1000, 1000), "Window");
+    
+    Sprite sp;
+    Texture tx;
+    tx.loadFromFile("Textures/pinkmap.png");
+   
+    sp.setScale(1.0f, 1.0f);
+    sp.setOrigin(tx.getSize().x / 2.f, tx.getSize().y / 2.f);
+    sp.setTexture(tx);
+    sp.setPosition(500.f, 500.f);
 
-	vector<Texture> txVector;
 
-	Texture tx;
-	char name[50];
+    while (window.isOpen())
+    {
+        window.clear();
 
-	for (int i = 32; i < 36; ++i)
-	{
-		sprintf(name, "Textures/cookie0020x2/cookie0020x2_00%d.png", i);
-		tx.loadFromFile(name);
-		txVector.push_back(tx);
-	}
-
-	Sprite sp;
-
-	Clock clock;
-
-	size_t keyFrameTime = 0;
-
-	while (window.isOpen())
-	{
-		window.clear();
-
-		Event e;
-		while (window.pollEvent(e))
-		{
-			switch (e.type)
-			{
-			case Event::Closed:
-			{
-				window.close();
-				break;
-			}
-			default:
-				break;
-			}
-		}
-
-		if (clock.getElapsedTime().asSeconds() > 0.2f)
-		{
-			sp.setTexture(txVector.data()[++keyFrameTime % txVector.size()]);
-			//keyFrameTime++;
-			clock.restart();
-		}
-		window.draw(sp);
-		window.display();
-	}
+        window.draw(sp);
+ 
+        window.display();
+    }
 }
