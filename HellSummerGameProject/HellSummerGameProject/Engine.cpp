@@ -14,7 +14,10 @@ void Engine::Init()
 {
 	// 현재 window 변수는 포인터로 존재한다.
 
-	this->window = new RenderWindow(VideoMode(500, 500), "Oo  Bubble Bobble  oO"); // this는 현재 작성하고 있는 Engine을 의미함. Engine의 윈도우 라는 뜻
+	this->window = new RenderWindow(VideoMode(500, 500), "Bubble Bobble"); // this는 현재 작성하고 있는 Engine을 의미함. Engine의 윈도우 라는 뜻
+	Image icon;
+	icon.loadFromFile("Textures/icon.png");
+	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 }
 
 void Engine::Destroy()
