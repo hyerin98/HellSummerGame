@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "Engine.h"
+#include "AnimationObject.h"
 
 Engine::Engine()
 {
@@ -19,6 +20,7 @@ void Engine::Init()
 	Image icon;
 	icon.loadFromFile("Textures/icon.png");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+	obj = new AnimationObject;
 }
 
 void Engine::Destroy()
@@ -74,19 +76,23 @@ void Engine::Input()
 	}
 
 	// Mouse Input
-	if (Mouse::isButtonPressed(Mouse::Left))
+	/*if (Mouse::isButtonPressed(Mouse::Left))
 	{
 		window->setTitle("Left Click");
 	}
 	else if (Mouse::isButtonPressed(Mouse::Right))
 	{
 		window->setTitle("Right Click");
-	}
+	}*/
 }
 
 void Engine::Update()
 {
 	deltaTime = timer.getElapsedTime().asSeconds(); // 시간도 업데이트해준다
+	
+	obj->Update(deltaTime);
+
+	timer.restart();
 	Input();
 }
 
@@ -96,6 +102,7 @@ void Engine::Render()
 	{
 		window->clear();
 		Update();
+		window->draw(*obj);
 		window->display();
 	}
 }

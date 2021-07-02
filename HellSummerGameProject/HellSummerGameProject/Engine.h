@@ -1,5 +1,8 @@
 #pragma once
 
+// 전방선언 -> 헤더 파일 꼬임방지를 위해 전방 선언을 한다.
+class AnimationObject;
+
 // 게임 전체를 이르는 클래스
 class Engine final // final : 더 이상 이 클래스에게 상속받지 않는다.
 {
@@ -16,6 +19,8 @@ private: /* 멤버 변수 를 써주는편 (상관없음) */
 
 	Clock timer;
 	float deltaTime = 0.f;
+
+	AnimationObject* obj = nullptr;
 
 private: /* 메소드 를 써주는편 (상관없음) */
 
