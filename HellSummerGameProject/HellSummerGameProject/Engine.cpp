@@ -14,7 +14,8 @@ void Engine::Init()
 {
 	// 현재 window 변수는 포인터로 존재한다.
 
-	this->window = new RenderWindow(VideoMode(500, 500), "Bubble Bobble"); // this는 현재 작성하고 있는 Engine을 의미함. Engine의 윈도우 라는 뜻
+	this->window = new RenderWindow(VideoMode(500, 500), "Oo Bubble Bobble oO"); // this는 현재 작성하고 있는 Engine을 의미함. Engine의 윈도우 라는 뜻
+	window->setMouseCursorVisible(false); // 마우스 커서 안보이게함 (false)
 	Image icon;
 	icon.loadFromFile("Textures/icon.png");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
@@ -39,13 +40,47 @@ void Engine::Input()
 		switch (e.type)
 		{
 		case Event::Closed:
+		{
+			window->close();
+			break;
+		}
+		case Event::MouseButtonPressed:
+		{
+			window->setTitle("Click"); // 클릭하면 윈도우 타이틀 바뀜
+			break;
+		}
+		case Event::KeyPressed:
+		{
+			switch (e.key.code)
 			{
-				window->close();
+			case Keyboard::A:
+			{
+				cout << "Pressed A key !!\n";
 				break;
 			}
 			default:
 				break;
+			}
 		}
+		default:
+			break;
+		}
+	}
+
+	// KeyBoard Input
+	if (Keyboard::isKeyPressed(Keyboard::Escape)) // Esc누르면 종료
+	{
+		window->close();
+	}
+
+	// Mouse Input
+	if (Mouse::isButtonPressed(Mouse::Left))
+	{
+		window->setTitle("Left Click");
+	}
+	else if (Mouse::isButtonPressed(Mouse::Right))
+	{
+		window->setTitle("Right Click");
 	}
 }
 
