@@ -13,7 +13,7 @@ C++에 대한 이해도를 증진시키고 그에 따른 스킬도 향상시킵�
 SFML 라이브러리를 사용하여 게임 프레임워크에 대한 이해도를 향상시킵니다.
 ```
 
-## 버블보블(Bubble Bobble)
+## Oo버블보블(Bubble Bobble)oO
 ![image_readtop_2020_683089_15937518424266087](https://user-images.githubusercontent.com/71120607/123213405-eeea9780-d500-11eb-87f9-dc1cec423396.png)
 
 * 게임 설명
@@ -28,6 +28,6 @@ SFML 라이브러리를 사용하여 게임 프레임워크에 대한 이해도�
 ```
 * 게임 조작법
 ```
-상하좌우(↑ ↓ ← →) 움직임, space bar(점프), x를 누르면 버블 공격
+좌우(← →) 움직임, space bar(점프), x를 누르면 버블 공격
 ```
 ![bublcave](https://user-images.githubusercontent.com/71120607/123213049-83082f00-d500-11eb-8af3-4b566fefb42c.png)
