@@ -13,45 +13,81 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="소스 파일\00.Engine">
-      <UniqueIdentifier>{20e7c4ba-e213-4b8c-bb80-ce9abc87604b}</UniqueIdentifier>
+    <Filter Include="소스 파일\00. Main">
+      <UniqueIdentifier>{f90dfdec-22f8-4097-847c-f3c98ff1944e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\01.Object">
-      <UniqueIdentifier>{67e4bd96-42d1-4fc3-9837-16434b57ef97}</UniqueIdentifier>
+    <Filter Include="소스 파일\01. Scene">
+      <UniqueIdentifier>{e149cd0a-0e76-45f3-83ee-a2e4fd1b8c6e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\01.Object\00.Object">
-      <UniqueIdentifier>{b57fe31b-1ad1-4c14-bb7a-73062a2b3da4}</UniqueIdentifier>
+    <Filter Include="소스 파일\02. Engine">
+      <UniqueIdentifier>{7b1e36be-3360-4149-805b-240c8b43f83b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\01.Object\00.Object\01.AnimationObject">
-      <UniqueIdentifier>{d5043767-9ad9-4fee-a5b9-ad70dccbf7ea}</UniqueIdentifier>
+    <Filter Include="소스 파일\03. Object">
+      <UniqueIdentifier>{55092b54-93da-455e-a0b6-353aef618bb6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\00. Main</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterScene.cpp">
+      <Filter>소스 파일\01. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>소스 파일\01. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="StartScene.cpp">
+      <Filter>소스 파일\01. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="GamingScene.cpp">
+      <Filter>소스 파일\01. Scene</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">
-      <Filter>소스 파일\00.Engine</Filter>
+      <Filter>소스 파일\02. Engine</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
-      <Filter>소스 파일\01.Object</Filter>
+      <Filter>소스 파일\03. Object</Filter>
     </ClCompile>
     <ClCompile Include="AnimationObject.cpp">
-      <Filter>소스 파일\01.Object\00.Object\01.AnimationObject</Filter>
+      <Filter>소스 파일\03. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="BackgroundObject.cpp">
+      <Filter>소스 파일\03. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>소스 파일\03. Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\00. Main</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterScene.h">
+      <Filter>소스 파일\01. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>소스 파일\01. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="StartScene.h">
+      <Filter>소스 파일\01. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GamingScene.h">
+      <Filter>소스 파일\01. Scene</Filter>
     </ClInclude>
     <ClInclude Include="Engine.h">
-      <Filter>소스 파일\00.Engine</Filter>
+      <Filter>소스 파일\02. Engine</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
-      <Filter>소스 파일\01.Object</Filter>
+      <Filter>소스 파일\03. Object</Filter>
     </ClInclude>
     <ClInclude Include="AnimationObject.h">
-      <Filter>소스 파일\01.Object\00.Object\01.AnimationObject</Filter>
+      <Filter>소스 파일\03. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="BackgroundObject.h">
+      <Filter>소스 파일\03. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>소스 파일\03. Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

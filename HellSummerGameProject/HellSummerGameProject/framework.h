@@ -7,9 +7,9 @@
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
+using namespace std;
 
 #include <iostream>
 #include <map>
 #include <vector>
-
-using namespace std;
+#include <stack>
