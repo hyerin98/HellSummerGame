@@ -15,6 +15,7 @@ private:
 	virtual void Init(const string& filePath);
 
 public:
+	virtual void Input(Event* e);
 	virtual void Destroy();
 	virtual void Update(const float& deltaTime);
 };

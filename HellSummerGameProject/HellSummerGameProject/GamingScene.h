@@ -11,6 +11,7 @@ private:
 	virtual void Init();
 
 public:
+	virtual void Input(Event* e);
 	virtual void Update(const float& deltaTime);
 	virtual void Render(RenderWindow* window);
 };

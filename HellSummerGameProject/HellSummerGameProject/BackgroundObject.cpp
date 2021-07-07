@@ -26,6 +26,10 @@ void BackgroundObject::Init(const string& filePath)
 	setTexture(*backgroundTexture);
 }
 
+void BackgroundObject::Input(Event* e)
+{
+}
+
 void BackgroundObject::Destroy()
 {
 }
