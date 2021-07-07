@@ -26,6 +26,14 @@ void GamingScene::Init()
 
 void GamingScene::Input(Event* e)
 {
+	/*switch (e->key.code)
+	{
+	case Keyboard::Escape:
+	{
+		scenes->top()->EndScene();
+		break;
+	}
+	}*/
 }
 
 void GamingScene::Update(const float& deltaTime)

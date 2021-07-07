@@ -1,27 +1,24 @@
 #include "framework.h"
-#include "StartScene.h"
-#include "BackgroundObject.h"
-#include "GamingScene.h"
 #include "LobbyScene.h"
+#include "BackGroundObject.h"
+#include "GamingScene.h"
 
-StartScene::StartScene()
+LobbyScene::LobbyScene()
 {
 	Init();
 }
-
-StartScene::StartScene(stack<Scene*>* scenes)
+LobbyScene::LobbyScene(stack<Scene*>* scenes)
 	:Scene(scenes)
 {
 	Init();
 }
-
-StartScene::~StartScene()
+LobbyScene::~LobbyScene()
 {
 }
 
-void StartScene::Init()
+void LobbyScene::Init()
 {
-	vObjects.push_back(new BackgroundObject("Textures/Title.png"));
+	//vObjects.push_back(new BackGroundObject(""));
 	Font* font = new Font;
 	font->loadFromFile("Font/BubbleFont.ttf");
 	Text* text = new Text("Press Space Key", *font);
@@ -31,24 +28,23 @@ void StartScene::Init()
 	mTexts["TEST"] = text;
 }
 
-void StartScene::Input(Event* e)
+void LobbyScene::Destroy()
+{
+}
+
+void LobbyScene::Input(Event* e)
 {
 	switch (e->key.code)
 	{
-	case Keyboard::Escape:
+	case Keyboard::Space:
 	{
-		scenes->top()->EndScene();
-		break;
-	}
-	default:
-	{
-		scenes->push(new LobbyScene(scenes));
+		scenes->push(new GamingScene(scenes));
 		break;
 	}
 	}
 }
 
-void StartScene::Update(const float& deltaTime)
+void LobbyScene::Update(const float& deltaTime)
 {
 	static float elapsedTime = 0.f;
 
@@ -58,8 +54,9 @@ void StartScene::Update(const float& deltaTime)
 
 	static int div = 1;
 
-	if ((elapsedTime += deltaTime) >= 0.02f)
+	if ((elapsedTime += deltaTime) >= 0.01f)
 	{
+
 		if ((++frame % 30) == 0)
 		{
 			div *= -1;
@@ -73,7 +70,7 @@ void StartScene::Update(const float& deltaTime)
 	Scene::Update(deltaTime);
 }
 
-void StartScene::Render(RenderWindow* window)
+void LobbyScene::Render(RenderWindow* window)
 {
 	Scene::Render(window);
 }

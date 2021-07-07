@@ -148,6 +148,7 @@
     <ClCompile Include="CharacterScene.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="GamingScene.cpp" />
+    <ClCompile Include="LobbyScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GamingScene.h" />
+    <ClInclude Include="LobbyScene.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="StartScene.h" />
