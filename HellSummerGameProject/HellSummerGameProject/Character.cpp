@@ -22,7 +22,7 @@ void Character::Init()
 		this->vAnimation.push_back(tx);
 	}
 	setScale(Vector2f(0.4f, 0.4f));
-	setPosition(Vector2f(500.f, 755.f));
+	setPosition(Vector2f(400.f, 780.f));
 }
 
 void Character::Destroy()
