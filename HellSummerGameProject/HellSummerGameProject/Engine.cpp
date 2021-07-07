@@ -14,7 +14,7 @@ Engine::~Engine()
 
 void Engine::Init()
 {
-	this->window = new RenderWindow(VideoMode(1000, 1000), "Oo Bubble Bobble oO");
+	this->window = new RenderWindow(VideoMode(1000, 800), "Oo Bubble Bobble oO");
 	window->setMouseCursorVisible(true);
 
 	Image icon;
