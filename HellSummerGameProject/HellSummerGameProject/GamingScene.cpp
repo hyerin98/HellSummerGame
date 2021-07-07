@@ -2,6 +2,7 @@
 #include "GamingScene.h"
 #include "Character.h"
 #include "BackgroundObject.h"
+#include "ResultScene.h";
 
 GamingScene::GamingScene()
 {
@@ -26,14 +27,14 @@ void GamingScene::Init()
 
 void GamingScene::Input(Event* e)
 {
-	/*switch (e->key.code)
+	switch (e->key.code)
 	{
-	case Keyboard::Escape:
+	case Keyboard::Q:
 	{
-		scenes->top()->EndScene();
+		scenes->push(new ResultScene(scenes));
 		break;
 	}
-	}*/
+	}
 }
 
 void GamingScene::Update(const float& deltaTime)

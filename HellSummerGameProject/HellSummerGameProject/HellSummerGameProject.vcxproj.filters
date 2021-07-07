@@ -60,6 +60,9 @@
     <ClCompile Include="LobbyScene.cpp">
       <Filter>소스 파일\01. Scene</Filter>
     </ClCompile>
+    <ClCompile Include="ResultScene.cpp">
+      <Filter>소스 파일\01. Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -93,6 +96,9 @@
       <Filter>소스 파일\03. Object</Filter>
     </ClInclude>
     <ClInclude Include="LobbyScene.h">
+      <Filter>소스 파일\01. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ResultScene.h">
       <Filter>소스 파일\01. Scene</Filter>
     </ClInclude>
   </ItemGroup>
