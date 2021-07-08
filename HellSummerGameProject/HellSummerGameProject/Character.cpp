@@ -74,9 +74,16 @@ void Character::Update(const float& deltaTime)
 	if (Keyboard::isKeyPressed(Keyboard::Right))
 	{
 		state = RUN;
+		move(0.05f, 0.f);
+	}
+
+	if (Keyboard::isKeyPressed(Keyboard::Left))
+	{
+		state = RUN;
+		move(-0.05f, 0.f);
 	}
 	
-	else if (Keyboard::isKeyPressed(Keyboard::X))
+	if (Keyboard::isKeyPressed(Keyboard::X))
 	{
 		state = ATTACK;
 	}

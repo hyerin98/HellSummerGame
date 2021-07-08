@@ -1,5 +1,7 @@
 #include "framework.h"
 #include "ResultScene.h"
+#include "StartScene.h"
+
 ResultScene::ResultScene()
 {
 	Init();
@@ -21,6 +23,19 @@ void ResultScene::Destroy()
 
 void ResultScene::Input(Event* e)
 {
+	switch (e->key.code)
+	{
+	case Keyboard::Escape:
+	{
+		scenes->top()->EndScene();
+		break;
+	}
+	default:
+	{
+		scenes->push(new StartScene(scenes));
+		break;
+	}
+	}
 }
 
 void ResultScene::Update(const float& deltaTime)
