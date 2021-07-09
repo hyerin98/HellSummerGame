@@ -150,6 +150,9 @@
     <ClCompile Include="GamingScene.cpp" />
     <ClCompile Include="LobbyScene.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Monster1.cpp" />
+    <ClCompile Include="Monster2.cpp" />
+    <ClCompile Include="Monster3.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -164,6 +167,9 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="GamingScene.h" />
     <ClInclude Include="LobbyScene.h" />
+    <ClInclude Include="Monster1.h" />
+    <ClInclude Include="Monster2.h" />
+    <ClInclude Include="Monster3.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="Scene.h" />

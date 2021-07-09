@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "CharacterScene.h"
 #include "Character.h"
+#include "Monster1.h"
 
 CharacterScene::CharacterScene()
 {

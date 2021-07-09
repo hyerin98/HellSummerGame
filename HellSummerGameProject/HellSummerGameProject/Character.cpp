@@ -16,7 +16,7 @@ void Character::Init()
 	char filePath[50];
 	for (int i = 0; i < 1; i++)
 	{
-		sprintf(filePath, "Textures/run/%02d.png", i);
+		sprintf(filePath, "Textures/run/%02d.png",i);
 		tx = new Texture;
 		tx->loadFromFile(filePath);
 		this->runAnimation.push_back(tx);
@@ -44,15 +44,15 @@ void Character::Destroy()
 
 //void Character::MoveUpdate() // 점프
 //{
-//	if (position.y < 200.f)
+//	if (position.y < 670.f)
 //	{
 //		// -10 -> -8 -> -6 ... 
 //		velocity.y += gravity;
 //	}
-//	else if (position.y > 200.f)
+//	else if (position.y > 400.f)
 //	{
 //		// 바닥으로 꺼지는 것을 막기위한 행동
-//		position.y = 200.f;
+//		position.y = 670.f;
 //	}
 //
 //	velocity += acceleration;
@@ -64,13 +64,6 @@ void Character::Destroy()
 
 void Character::Update(const float& deltaTime)
 {
-	//if (Keyboard::isKeyPressed(Keyboard::Space)) // 점프
-	//{
-	//	// SFML 좌표계 좌상단이 0, 0
-	//	velocity.y = -2.5f;
-	//}
-	//MoveUpdate();
-
 	if (Keyboard::isKeyPressed(Keyboard::Right))
 	{
 		state = RUN;
@@ -87,6 +80,13 @@ void Character::Update(const float& deltaTime)
 	{
 		state = ATTACK;
 	}
+
+	//else if (Keyboard::isKeyPressed(Keyboard::Space)) // 점프
+	//{
+	//	// SFML 좌표계 좌상단이 0, 0
+	//	velocity.y = -0.2f;
+	//}
+	//MoveUpdate();
 
 	elapsedTime += deltaTime;
 

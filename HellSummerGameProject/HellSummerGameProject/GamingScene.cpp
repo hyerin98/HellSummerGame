@@ -2,7 +2,10 @@
 #include "GamingScene.h"
 #include "Character.h"
 #include "BackgroundObject.h"
-#include "ResultScene.h";
+#include "ResultScene.h"; 
+#include "Monster1.h"
+#include "Monster2.h"
+#include "Monster3.h"
 
 GamingScene::GamingScene()
 {
@@ -23,6 +26,9 @@ void GamingScene::Init()
 {
 	vObjects.push_back(new BackgroundObject("Textures/pinkmap.png"));
 	vObjects.push_back(new Character);
+	vObjects.push_back(new Monster1);
+	vObjects.push_back(new Monster2);
+	vObjects.push_back(new Monster3);
 }
 
 void GamingScene::Input(Event* e)
