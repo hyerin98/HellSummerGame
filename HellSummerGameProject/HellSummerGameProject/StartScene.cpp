@@ -27,10 +27,10 @@ void StartScene::Init()
 	vObjects.push_back(new BackgroundObject("Textures/Title.png"));
 	Font* font = new Font;
 	font->loadFromFile("Font/BubbleFont.ttf");
-	Text* text = new Text("Press Space Key", *font);
+	Text* text = new Text("Press Space Key!!", *font);
 	text->setFillColor(Color::White);
 	text->setOrigin(text->getGlobalBounds().width / 2.f, text->getGlobalBounds().height / 2.f);
-	text->setPosition(Vector2f(500.f, 690.f));
+	text->setPosition(Vector2f(600.f, 590.f));
 	mTexts["TEST"] = text;
 }
 

@@ -53,7 +53,7 @@ void Character::Init()
 	stateAnimation[ATTACKLEFT] = attackleftAnimation;
 
 	setScale(Vector2f(0.2f, 0.2f));
-	setPosition(Vector2f(400.f, 670.f));
+	setPosition(Vector2f(450.f, 575.f));
 }
 
 void Character::Destroy()

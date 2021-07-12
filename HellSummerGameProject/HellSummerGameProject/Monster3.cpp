@@ -22,7 +22,7 @@ void Monster3::Init()
 		this->vAnimation.push_back(tx);
 	}
 	setScale(Vector2f(0.18f, 0.18f));
-	setPosition(Vector2f(600.f, 310.f));
+	setPosition(Vector2f(800.f, 260.f));
 }
 
 void Monster3::Destroy()

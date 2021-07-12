@@ -25,6 +25,9 @@
     <Filter Include="소스 파일\03. Object">
       <UniqueIdentifier>{55092b54-93da-455e-a0b6-353aef618bb6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01. Scene\Monster Scene">
+      <UniqueIdentifier>{4fc34b08-0990-43b5-a96d-3834047ae8c7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -64,13 +67,13 @@
       <Filter>소스 파일\01. Scene</Filter>
     </ClCompile>
     <ClCompile Include="Monster1.cpp">
-      <Filter>소스 파일\01. Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Monster3.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\01. Scene\Monster Scene</Filter>
     </ClCompile>
     <ClCompile Include="Monster2.cpp">
-      <Filter>소스 파일\01. Scene</Filter>
+      <Filter>소스 파일\01. Scene\Monster Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster3.cpp">
+      <Filter>소스 파일\01. Scene\Monster Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -111,13 +114,13 @@
       <Filter>소스 파일\01. Scene</Filter>
     </ClInclude>
     <ClInclude Include="Monster1.h">
-      <Filter>소스 파일\01. Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Monster3.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\01. Scene\Monster Scene</Filter>
     </ClInclude>
     <ClInclude Include="Monster2.h">
-      <Filter>소스 파일\01. Scene</Filter>
+      <Filter>소스 파일\01. Scene\Monster Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster3.h">
+      <Filter>소스 파일\01. Scene\Monster Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

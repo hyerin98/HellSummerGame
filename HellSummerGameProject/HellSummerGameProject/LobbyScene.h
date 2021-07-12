@@ -6,6 +6,11 @@ public:
 	LobbyScene();
 	LobbyScene(stack<Scene*>* scenes);
 	~LobbyScene();
+
+
+private:
+	Music music;
+
 private:
 	virtual void Init();
 public:

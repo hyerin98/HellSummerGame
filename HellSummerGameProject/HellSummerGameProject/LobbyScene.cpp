@@ -1,6 +1,6 @@
 #include "framework.h"
 #include "LobbyScene.h"
-#include "BackGroundObject.h"
+#include "BackgroundObject.h"
 #include "GamingScene.h"
 
 LobbyScene::LobbyScene()
@@ -18,13 +18,16 @@ LobbyScene::~LobbyScene()
 
 void LobbyScene::Init()
 {
-	//vObjects.push_back(new BackGroundObject(""));
+	music.openFromFile("Sound/lobby.flac");
+	music.play();
+
+	vObjects.push_back(new BackgroundObject("Textures/lobby.png"));
 	Font* font = new Font;
 	font->loadFromFile("Font/BubbleFont.ttf");
-	Text* text = new Text("Press Space Key", *font);
+	Text* text = new Text("Press Space Key!!", *font);
 	text->setFillColor(Color::White);
 	text->setOrigin(text->getGlobalBounds().width / 2.f, text->getGlobalBounds().height / 2.f);
-	text->setPosition(Vector2f(500.f, 690.f));
+	text->setPosition(Vector2f(600.f, 590.f));
 	mTexts["TEST"] = text;
 }
 
@@ -39,6 +42,7 @@ void LobbyScene::Input(Event* e)
 	case Keyboard::Space:
 	{
 		scenes->push(new GamingScene(scenes));
+		music.stop();
 		break;
 	}
 	}
@@ -54,7 +58,7 @@ void LobbyScene::Update(const float& deltaTime)
 
 	static int div = 1;
 
-	if ((elapsedTime += deltaTime) >= 0.01f)
+	if ((elapsedTime += deltaTime) >= 0.02f)
 	{
 
 		if ((++frame % 30) == 0)

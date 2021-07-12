@@ -13,8 +13,8 @@ Engine::~Engine()
 
 void Engine::Init()
 {
-	this->window = new RenderWindow(VideoMode(1000, 800), "Oo Bubble Bobble oO");
-	window->setMouseCursorVisible(true);
+	this->window = new RenderWindow(VideoMode(1200, 700), "Oo Bubble Bobble oO");
+	window->setMouseCursorVisible(false);
 
 	Image icon;
 	icon.loadFromFile("Textures/icon.png");
