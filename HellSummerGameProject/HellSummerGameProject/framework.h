@@ -5,6 +5,7 @@
 // 정규라이브러리를 포함합니다. ex) <stdio.h>
 #define _CRT_SECURE_NO_WARNINGS
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 using namespace sf;
 using namespace std;

@@ -6,6 +6,8 @@ public:
 	GamingScene();
 	GamingScene(stack <Scene*>* scenes);
 	~GamingScene();
+private:
+	Music music;
 
 private:
 	virtual void Init();

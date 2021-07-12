@@ -24,6 +24,9 @@ GamingScene::~GamingScene()
 
 void GamingScene::Init()
 {
+	music.openFromFile("Sound/gaming.flac");
+	music.play();
+
 	vObjects.push_back(new BackgroundObject("Textures/pinkmap.png"));
 	vObjects.push_back(new Character);
 	vObjects.push_back(new Monster1);
@@ -38,6 +41,7 @@ void GamingScene::Input(Event* e)
 	case Keyboard::Q:
 	{
 		scenes->push(new ResultScene(scenes));
+		music.stop();
 		break;
 	}
 	}

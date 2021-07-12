@@ -104,11 +104,6 @@ void Character::Update(const float& deltaTime)
 			state = ATTACKLEFT;
 		}
 	}
-	
-	/*if (Keyboard::isKeyPressed(Keyboard::X))
-	{
-		state = ATTACKRIGHT;
-	}*/
 
 	//if (Keyboard::isKeyPressed(Keyboard::Space)) // 점프
 	//{
@@ -119,7 +114,7 @@ void Character::Update(const float& deltaTime)
 
 	elapsedTime += deltaTime;
 
-	if (elapsedTime > 0.2f)
+	if (elapsedTime > 0.13f)
 	{
 		// stateAnimation 이라는 컨테이너 안에 객체 하나씩을 부른다. 이것을 animation
 		for (auto& animation : stateAnimation) // stateAnimation 안에 있는 객체들을 animation 하나씩 불러올수있음

@@ -21,6 +21,9 @@ StartScene::~StartScene()
 
 void StartScene::Init()
 {
+	music.openFromFile("Sound/start.flac");
+	music.play();
+
 	vObjects.push_back(new BackgroundObject("Textures/Title.png"));
 	Font* font = new Font;
 	font->loadFromFile("Font/BubbleFont.ttf");
@@ -43,6 +46,7 @@ void StartScene::Input(Event* e)
 	default:
 	{
 		scenes->push(new LobbyScene(scenes));
+		music.stop();
 		break;
 	}
 	}
