@@ -154,6 +154,7 @@
     <ClCompile Include="Monster2.cpp" />
     <ClCompile Include="Monster3.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="PassPoint.cpp" />
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="StartScene.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="Monster2.h" />
     <ClInclude Include="Monster3.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="PassPoint.h" />
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="StartScene.h" />

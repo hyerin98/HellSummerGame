@@ -6,6 +6,7 @@
 #include "Monster1.h"
 #include "Monster2.h"
 #include "Monster3.h"
+#include "PassPoint.h"
 
 GamingScene::GamingScene()
 {
@@ -32,6 +33,7 @@ void GamingScene::Init()
 	vObjects.push_back(new Monster1);
 	vObjects.push_back(new Monster2);
 	vObjects.push_back(new Monster3);
+	vObjects.push_back(new PassPoint);
 }
 
 void GamingScene::Input(Event* e)
