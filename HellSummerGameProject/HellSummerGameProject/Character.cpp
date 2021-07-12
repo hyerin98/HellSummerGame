@@ -14,24 +14,43 @@ void Character::Init()
 {
 	Texture* tx = nullptr;
 	char filePath[50];
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 6; i++)
 	{
-		sprintf(filePath, "Textures/run/%02d.png",i);
+		sprintf(filePath, "Textures/runright/%02d.png",i);
 		tx = new Texture;
 		tx->loadFromFile(filePath);
-		this->runAnimation.push_back(tx);
+		this->runrightAnimation.push_back(tx);
 	}
 
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 5; i++)
 	{
-		sprintf(filePath, "Textures/attack/%02d.png", i);
+		sprintf(filePath, "Textures/runleft/%02d.png", i);
 		tx = new Texture;
 		tx->loadFromFile(filePath);
-		this->attackAnimation.push_back(tx);
+		this->runleftAnimation.push_back(tx);
 	}
 
-	stateAnimation.insert({ RUN,runAnimation }); // stateAnimation[RUN] = runAnimation; 이렇게 써도 같은말. 둘 중 편한거로 쓰자
-	stateAnimation[ATTACK] = attackAnimation;
+	for (int i = 0; i < 4; i++)
+	{
+		sprintf(filePath, "Textures/attackright/%02d.png", i);
+		tx = new Texture;
+		tx->loadFromFile(filePath);
+		this->attackrightAnimation.push_back(tx);
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		sprintf(filePath, "Textures/attackleft/%02d.png", i);
+		tx = new Texture;
+		tx->loadFromFile(filePath);
+		this->attackleftAnimation.push_back(tx);
+	}
+
+
+	stateAnimation.insert({ RUNRIGHT,runrightAnimation }); // stateAnimation[RUN] = runAnimation; 이렇게 써도 같은말. 둘 중 편한거로 쓰자
+	stateAnimation[RUNLEFT] = runleftAnimation;
+	stateAnimation[ATTACKRIGHT] = attackrightAnimation;
+	stateAnimation[ATTACKLEFT] = attackleftAnimation;
 
 	setScale(Vector2f(0.2f, 0.2f));
 	setPosition(Vector2f(400.f, 670.f));
@@ -44,15 +63,15 @@ void Character::Destroy()
 
 //void Character::MoveUpdate() // 점프
 //{
-//	if (position.y < 670.f)
+//	if (position.y < 200.f)
 //	{
 //		// -10 -> -8 -> -6 ... 
 //		velocity.y += gravity;
 //	}
-//	else if (position.y > 400.f)
+//	else if (position.y > 200.f)
 //	{
 //		// 바닥으로 꺼지는 것을 막기위한 행동
-//		position.y = 670.f;
+//		position.y = 200.f;
 //	}
 //
 //	velocity += acceleration;
@@ -66,25 +85,35 @@ void Character::Update(const float& deltaTime)
 {
 	if (Keyboard::isKeyPressed(Keyboard::Right))
 	{
-		state = RUN;
-		move(0.05f, 0.f);
+		state = RUNRIGHT;
+		move(0.08f, 0.f);
+
+		if (Keyboard::isKeyPressed(Keyboard::X))
+		{
+			state = ATTACKRIGHT;
+		}
 	}
 
 	if (Keyboard::isKeyPressed(Keyboard::Left))
 	{
-		state = RUN;
-		move(-0.05f, 0.f);
+		state = RUNLEFT;
+		move(-0.08f, 0.f);
+
+		if (Keyboard::isKeyPressed(Keyboard::X))
+		{
+			state = ATTACKLEFT;
+		}
 	}
 	
-	if (Keyboard::isKeyPressed(Keyboard::X))
+	/*if (Keyboard::isKeyPressed(Keyboard::X))
 	{
-		state = ATTACK;
-	}
+		state = ATTACKRIGHT;
+	}*/
 
-	//else if (Keyboard::isKeyPressed(Keyboard::Space)) // 점프
+	//if (Keyboard::isKeyPressed(Keyboard::Space)) // 점프
 	//{
 	//	// SFML 좌표계 좌상단이 0, 0
-	//	velocity.y = -0.2f;
+	//	velocity.y = -1.0f;
 	//}
 	//MoveUpdate();
 

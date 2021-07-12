@@ -4,8 +4,10 @@
 enum CHARACTER_STATE
 {
 	// IDLE
-	RUN,	// run은 0이다
-	ATTACK	// attack은 1이다
+	RUNRIGHT,
+	RUNLEFT,
+	ATTACKRIGHT,
+	ATTACKLEFT
 };
 
 class Character : public AnimationObject
@@ -23,10 +25,12 @@ private:
 
 	float gravity = 2.f;
 
-	vector<Texture*> runAnimation;
-	vector<Texture*> attackAnimation;
+	vector<Texture*> runrightAnimation;
+	vector<Texture*> runleftAnimation;
+	vector<Texture*> attackrightAnimation;
+	vector<Texture*> attackleftAnimation;
 
-	int state = RUN;
+	int state = RUNRIGHT;
 
 	map<int, vector<Texture*>> stateAnimation; // int 자료형 하나랑 vector를 짝꿍시켜준것
 											   // 예를 들어서, run을(key) 부르면 run이랑 runAnimation(value)을 짝꿍시켜주고,
