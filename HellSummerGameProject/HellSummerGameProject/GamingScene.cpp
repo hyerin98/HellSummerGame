@@ -28,7 +28,7 @@ void GamingScene::Init()
 	music.openFromFile("Sound/gaming.flac");
 	music.play();
 
-	vObjects.push_back(new BackgroundObject("Textures/pinkmap.png"));
+	vObjects.push_back(new BackgroundObject("Textures/map.png"));
 	vObjects.push_back(new Character);
 	vObjects.push_back(new Monster1);
 	vObjects.push_back(new Monster2);

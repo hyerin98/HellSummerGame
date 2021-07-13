@@ -23,8 +23,6 @@ void Monster1::Init()
 	}
 	setScale(Vector2f(0.18f, 0.18f));
 	setPosition(Vector2f(350.f, 360.f));
-
-
 }
 
 void Monster1::Destroy()
