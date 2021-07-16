@@ -4,15 +4,12 @@ class LobbyScene : public Scene
 {
 public:
 	LobbyScene();
-	LobbyScene(stack<Scene*>* scenes);
+	LobbyScene(stack<Scene*>* scenes, RenderWindow* window);
 	~LobbyScene();
-
-
-private:
-	Music music;
 
 private:
 	virtual void Init();
+
 public:
 
 	virtual void Destroy();
@@ -21,5 +18,5 @@ public:
 
 	virtual void Update(const float& deltaTime);
 
-	virtual void Render(RenderWindow* window);
+	virtual void Render();
 };

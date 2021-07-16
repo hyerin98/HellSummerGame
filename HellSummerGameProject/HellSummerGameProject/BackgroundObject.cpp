@@ -1,39 +1,35 @@
 #include "framework.h"
-#include "BackgroundObject.h"
+#include "BackGroundObject.h"
 
-BackgroundObject::BackgroundObject()
+BackGroundObject::BackGroundObject()
 {
 }
 
-BackgroundObject::BackgroundObject(const string& filePath)
+BackGroundObject::BackGroundObject(const string& filePath)
 {
 	Init(filePath);
 }
 
-BackgroundObject::~BackgroundObject()
+BackGroundObject::~BackGroundObject()
 {
 }
 
-void BackgroundObject::Init()
+void BackGroundObject::Init()
 {
 }
 
-void BackgroundObject::Init(const string& filePath)
+void BackGroundObject::Init(const string& filePath)
 {
-	backgroundTexture = new Texture;
-	backgroundTexture->setSmooth(true);
-	backgroundTexture->loadFromFile(filePath);
-	setTexture(*backgroundTexture);
+	backGroundTexture = new Texture;
+	backGroundTexture->setSmooth(true);
+	backGroundTexture->loadFromFile(filePath);
+	setTexture(*backGroundTexture);
 }
 
-void BackgroundObject::Input(Event* e)
-{
-}
-
-void BackgroundObject::Destroy()
+void BackGroundObject::Destroy()
 {
 }
 
-void BackgroundObject::Update(const float& deltaTime)
+void BackGroundObject::Update(const float& deltaTime)
 {
 }

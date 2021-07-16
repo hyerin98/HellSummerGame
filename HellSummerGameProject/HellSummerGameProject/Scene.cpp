@@ -1,14 +1,15 @@
 #include "framework.h"
 #include "Scene.h"
 #include "Object.h"
+#include "TextObject.h"
 
 Scene::Scene()
 {
 	Init();
 }
 
-Scene::Scene(stack<Scene*>* scenes)
-	:scenes(scenes)	//부모클래스의 생성자를 그대로 사용해라
+Scene::Scene(stack<Scene*>* scenes, RenderWindow* window)
+	:scenes(scenes), window(window)
 {
 	Init();
 }
@@ -37,14 +38,94 @@ void Scene::Input(Event* e)
 
 void Scene::Update(const float& deltaTime)
 {
-	for (auto& obj : vObjects)
+	mousePosition = window->mapPixelToCoords(Mouse::getPosition(*window));
+
+	if (Mouse::isButtonPressed(Mouse::Right))
+	{
+		cout << mousePosition.x << " " << mousePosition.y << endl;
+	}
+
+	for (auto& btn : mButtons)
+	{
+		btn.second->Update(mousePosition);
+	}
+
+	for (auto& obj : animationObjects)
+	{
+		if (obj->IsActive())
+		{
+			obj->Update(deltaTime);
+			if (obj->GetHitBoxActive())
+			{
+				obj->UpdateHitBox();
+			}
+		}
+	}
+
+	for (auto& obj : staticObjects)
+	{
+		if (obj->IsActive())
+		{
+			obj->Update(deltaTime);
+			if (obj->GetHitBoxActive())
+			{
+				obj->UpdateHitBox();
+			}
+		}
+	}
+
+	/*for (auto& obj : vObjects)
 	{
 		obj->Update(deltaTime);
-	}
+	}*/
 }
 
-void Scene::Render(RenderWindow* window)
+void Scene::Render()
 {
+	if (backGround)
+	{
+		window->draw(*backGround);
+	}
+
+	for (auto& obj : animationObjects)
+	{
+		if (obj->IsActive())
+		{
+			window->draw(*obj);
+			if (obj->GetHitBoxActive())
+			{
+				window->draw(obj->GetHitBox(), 5, LinesStrip);
+			}
+		}
+	}
+
+	for (auto& obj : staticObjects)
+	{
+		if (obj->IsActive())
+		{
+			window->draw(*obj);
+			if (obj->GetHitBoxActive())
+			{
+				window->draw(obj->GetHitBox(), 5, LinesStrip);
+			}
+		}
+	}
+
+	for (auto& btn : mButtons)
+	{
+		window->draw(*btn.second);
+	}
+
+	for (auto& txt : mTexts)
+	{
+		window->draw(*txt.second);
+	}
+
+	/*if (backGround)
+	{
+		window->draw(*backGround);
+	}
+
 	for (auto& obj : vObjects)
 	{
 		window->draw(*obj);
@@ -53,5 +134,5 @@ void Scene::Render(RenderWindow* window)
 	for (auto& txt : mTexts)
 	{
 		window->draw(*txt.second);
-	}
+	}*/
 }

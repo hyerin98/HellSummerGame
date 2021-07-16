@@ -1,21 +1,21 @@
 #pragma once
 #include "Object.h"
-class BackgroundObject : public Object
+class  BackGroundObject : public Object
 {
 public:
-	BackgroundObject();
-	BackgroundObject(const string& filePath);
-	~BackgroundObject();
+	BackGroundObject();
+	BackGroundObject(const string& filePath);
+	~BackGroundObject();
 
 protected:
-	Texture* backgroundTexture = nullptr;
+	Texture* backGroundTexture = nullptr;
 
 private:
 	virtual void Init();
 	virtual void Init(const string& filePath);
 
 public:
-	virtual void Input(Event* e);
+	//virtual void Input(Event* e);
 	virtual void Destroy();
 	virtual void Update(const float& deltaTime);
 };

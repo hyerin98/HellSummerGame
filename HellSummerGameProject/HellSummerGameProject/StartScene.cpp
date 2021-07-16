@@ -1,7 +1,6 @@
 #include "framework.h"
 #include "StartScene.h"
-#include "BackgroundObject.h"
-#include "GamingScene.h"
+#include "BackGroundObject.h"
 #include "LobbyScene.h"
 
 StartScene::StartScene()
@@ -9,8 +8,8 @@ StartScene::StartScene()
 	Init();
 }
 
-StartScene::StartScene(stack<Scene*>* scenes)
-	:Scene(scenes)
+StartScene::StartScene(stack<Scene*>* scenes, RenderWindow* window)
+	:Scene(scenes, window)
 {
 	Init();
 }
@@ -21,17 +20,13 @@ StartScene::~StartScene()
 
 void StartScene::Init()
 {
-	music.openFromFile("Sound/start.flac");
-	music.play();
+	backGround = new BackGroundObject("Textures/Title.png");
 
-	vObjects.push_back(new BackgroundObject("Textures/Title.png"));
-	Font* font = new Font;
-	font->loadFromFile("Font/BubbleFont.ttf");
-	Text* text = new Text("Press Space Key!!", *font);
-	text->setFillColor(Color::White);
-	text->setOrigin(text->getGlobalBounds().width / 2.f, text->getGlobalBounds().height / 2.f);
-	text->setPosition(Vector2f(600.f, 590.f));
-	mTexts["TEST"] = text;
+	mTexts["TITLE"] = new TextObject("Press Space Keys!!", "Font/BubbleFont.ttf", Vector2f(600.f, 590.f));
+}
+
+void StartScene::Destroy()
+{
 }
 
 void StartScene::Input(Event* e)
@@ -45,8 +40,7 @@ void StartScene::Input(Event* e)
 	}
 	default:
 	{
-		scenes->push(new LobbyScene(scenes));
-		music.stop();
+		scenes->push(new LobbyScene(scenes, window));
 		break;
 	}
 	}
@@ -55,11 +49,8 @@ void StartScene::Input(Event* e)
 void StartScene::Update(const float& deltaTime)
 {
 	static float elapsedTime = 0.f;
-
 	static float txtScale = 1.f;
-
 	static int frame = 0;
-
 	static int div = 1;
 
 	if ((elapsedTime += deltaTime) >= 0.02f)
@@ -70,14 +61,13 @@ void StartScene::Update(const float& deltaTime)
 		}
 
 		txtScale += (0.01f * div);
-		mTexts["TEST"]->setScale(Vector2f(txtScale, txtScale));
+		mTexts["TITLE"]->setScale(Vector2f(txtScale, txtScale));
 		elapsedTime = 0.f;
 	}
-
 	Scene::Update(deltaTime);
 }
 
-void StartScene::Render(RenderWindow* window)
+void StartScene::Render()
 {
-	Scene::Render(window);
+	Scene::Render();
 }

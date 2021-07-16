@@ -14,18 +14,21 @@ Engine::~Engine()
 void Engine::Init()
 {
 	this->window = new RenderWindow(VideoMode(1200, 700), "Oo Bubble Bobble oO");
-	window->setMouseCursorVisible(false);
+	window->setFramerateLimit(60);
+	window->setMouseCursorVisible(true);
 
 	Image icon;
 	icon.loadFromFile("Textures/icon.png");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
-	this->scenes.push(new StartScene(&scenes));
+	// 시작화면
+	this->scenes.push(new StartScene(&scenes,window));
 }
 
 void Engine::Destroy()
 {
-	if (window)		//if (window != nullptr)
+	// 윈도우가 nullptr이 아니라면
+	if (window)		
 	{
 		delete window;
 	}
@@ -42,6 +45,7 @@ void Engine::Input()
 			window->close();
 			break;
 		}
+		case Event::MouseButtonPressed:
 		case Event::KeyPressed:
 		{
 			if (!scenes.empty())
@@ -59,7 +63,7 @@ void Engine::Update()
 {
 	deltaTime = timer.getElapsedTime().asSeconds();
 	timer.restart();
-	Input();
+
 	if (!scenes.empty())
 	{
 		scenes.top()->Update(deltaTime);
@@ -76,6 +80,7 @@ void Engine::Update()
 	{
 		window->close();
 	}
+	Input();
 }
 
 void Engine::Render()
@@ -84,9 +89,10 @@ void Engine::Render()
 	{
 		window->clear();
 		Update();
+
 		if (!scenes.empty())
 		{
-			scenes.top()->Render(window);
+			scenes.top()->Render();
 		}
 		else
 		{

@@ -1,34 +1,33 @@
 #include "framework.h"
 #include "LobbyScene.h"
-#include "BackgroundObject.h"
+#include "BackGroundObject.h"
 #include "GamingScene.h"
 
 LobbyScene::LobbyScene()
 {
 	Init();
 }
-LobbyScene::LobbyScene(stack<Scene*>* scenes)
-	:Scene(scenes)
+
+LobbyScene::LobbyScene(stack<Scene*>* scenes, RenderWindow* window)
+	:Scene(scenes, window)
 {
 	Init();
 }
+
 LobbyScene::~LobbyScene()
 {
 }
 
 void LobbyScene::Init()
 {
-	music.openFromFile("Sound/lobby.flac");
-	music.play();
-
-	vObjects.push_back(new BackgroundObject("Textures/lobby.png"));
-	Font* font = new Font;
+	backGround = new BackGroundObject("Textures/lobby.png");
+	/*Font* font = new Font;
 	font->loadFromFile("Font/BubbleFont.ttf");
 	Text* text = new Text("Press Space Key!!", *font);
 	text->setFillColor(Color::White);
 	text->setOrigin(text->getGlobalBounds().width / 2.f, text->getGlobalBounds().height / 2.f);
 	text->setPosition(Vector2f(600.f, 590.f));
-	mTexts["TEST"] = text;
+	mTexts["TEST"] = text;*/
 }
 
 void LobbyScene::Destroy()
@@ -41,8 +40,7 @@ void LobbyScene::Input(Event* e)
 	{
 	case Keyboard::Space:
 	{
-		scenes->push(new GamingScene(scenes));
-		music.stop();
+		scenes->push(new GamingScene(scenes,window));
 		break;
 	}
 	}
@@ -50,7 +48,7 @@ void LobbyScene::Input(Event* e)
 
 void LobbyScene::Update(const float& deltaTime)
 {
-	static float elapsedTime = 0.f;
+	/*static float elapsedTime = 0.f;
 
 	static float txtScale = 1.f;
 
@@ -63,18 +61,18 @@ void LobbyScene::Update(const float& deltaTime)
 
 		if ((++frame % 30) == 0)
 		{
-			div *= -1;
+			div *= -1; 
 		}
 
 		txtScale += (0.01f * div);
 		mTexts["TEST"]->setScale(Vector2f(txtScale, txtScale));
 		elapsedTime = 0.f;
-	}
+	}*/
 
 	Scene::Update(deltaTime);
 }
 
-void LobbyScene::Render(RenderWindow* window)
+void LobbyScene::Render()
 {
-	Scene::Render(window);
+	Scene::Render();
 }

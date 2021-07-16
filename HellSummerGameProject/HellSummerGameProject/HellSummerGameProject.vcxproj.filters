@@ -54,7 +54,7 @@
     <ClCompile Include="AnimationObject.cpp">
       <Filter>소스 파일\03. Object</Filter>
     </ClCompile>
-    <ClCompile Include="BackgroundObject.cpp">
+    <ClCompile Include="BackGroundObject.cpp">
       <Filter>소스 파일\03. Object</Filter>
     </ClCompile>
     <ClCompile Include="Character.cpp">
@@ -76,6 +76,12 @@
       <Filter>소스 파일\01. Scene\Monster Scene</Filter>
     </ClCompile>
     <ClCompile Include="PassPoint.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TextObject.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -104,7 +110,7 @@
     <ClInclude Include="AnimationObject.h">
       <Filter>소스 파일\03. Object</Filter>
     </ClInclude>
-    <ClInclude Include="BackgroundObject.h">
+    <ClInclude Include="BackGroundObject.h">
       <Filter>소스 파일\03. Object</Filter>
     </ClInclude>
     <ClInclude Include="Character.h">
@@ -126,6 +132,12 @@
       <Filter>소스 파일\01. Scene\Monster Scene</Filter>
     </ClInclude>
     <ClInclude Include="PassPoint.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TextObject.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

@@ -86,7 +86,7 @@ void Character::Update(const float& deltaTime)
 	if (Keyboard::isKeyPressed(Keyboard::Right))
 	{
 		state = RUNRIGHT;
-		move(0.08f, 0.f);
+		move(1.0f, 0.f);
 
 		if (Keyboard::isKeyPressed(Keyboard::X))
 		{
@@ -97,7 +97,7 @@ void Character::Update(const float& deltaTime)
 	if (Keyboard::isKeyPressed(Keyboard::Left))
 	{
 		state = RUNLEFT;
-		move(-0.08f, 0.f);
+		move(-1.0f, 0.f);
 
 		if (Keyboard::isKeyPressed(Keyboard::X))
 		{
