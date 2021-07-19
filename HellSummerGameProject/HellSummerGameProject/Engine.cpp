@@ -9,6 +9,7 @@ Engine::Engine()
 
 Engine::~Engine()
 {
+	Destroy();
 }
 
 void Engine::Init()
@@ -17,28 +18,37 @@ void Engine::Init()
 	window->setFramerateLimit(60);
 	window->setMouseCursorVisible(true);
 
+	this->e = new Event;
+	this->timer = new Clock;
+
+	// 윈도우창 아이콘 꾸미기
 	Image icon;
 	icon.loadFromFile("Textures/icon.png");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
+	// 배경음악
+	soundSystem = new SoundSystem("Sound/start.flac");
+	soundSystem->AddEffectSound("Sound/Click.wav", "Click");
 	// 시작화면
-	this->scenes.push(new StartScene(&scenes,window));
+	scenes.push(new StartScene(&scenes, window, soundSystem));
+
+	soundSystem->Play();
 }
 
 void Engine::Destroy()
 {
-	// 윈도우가 nullptr이 아니라면
-	if (window)		
-	{
-		delete window;
-	}
+	DELETE(timer);
+	DELETE(e);
+	DELETE(window);
+
+	soundSystem->Destroy();
 }
 
 void Engine::Input()
 {
-	while (window->pollEvent(e))
+	while (window->pollEvent(*e))
 	{
-		switch (e.type)
+		switch (e->type)
 		{
 		case Event::Closed:
 		{
@@ -50,7 +60,7 @@ void Engine::Input()
 		{
 			if (!scenes.empty())
 			{
-				scenes.top()->Input(&e);
+				scenes.top()->Input(e);
 			}
 		}
 		default:
@@ -61,8 +71,10 @@ void Engine::Input()
 
 void Engine::Update()
 {
-	deltaTime = timer.getElapsedTime().asSeconds();
-	timer.restart();
+	this->deltaTime = timer->getElapsedTime().asSeconds();
+	timer->restart();
+
+	Input();
 
 	if (!scenes.empty())
 	{
@@ -80,7 +92,6 @@ void Engine::Update()
 	{
 		window->close();
 	}
-	Input();
 }
 
 void Engine::Render()

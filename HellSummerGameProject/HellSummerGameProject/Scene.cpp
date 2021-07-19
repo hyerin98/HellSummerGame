@@ -8,8 +8,8 @@ Scene::Scene()
 	Init();
 }
 
-Scene::Scene(stack<Scene*>* scenes, RenderWindow* window)
-	:scenes(scenes), window(window)
+Scene::Scene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
+	:scenes(scenes), window(window), soundSystem(soundSystem)
 {
 	Init();
 }
@@ -22,14 +22,14 @@ void Scene::Init()
 {
 }
 
-bool Scene::GetQuit() const
+bool Scene::GetQuit() 
 {
-	return quit;
+	return Quit;
 }
 
 void Scene::EndScene()
 {
-	quit = true;
+	Quit = true;
 }
 
 void Scene::Input(Event* e)

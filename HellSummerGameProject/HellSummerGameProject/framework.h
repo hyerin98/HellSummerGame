@@ -10,6 +10,8 @@
 using namespace sf;
 using namespace std;
 
+#define DELETE(x) if(x) delete (x); (x) = nullptr
+
 #include <iostream>
 #include <map>
 #include <vector>

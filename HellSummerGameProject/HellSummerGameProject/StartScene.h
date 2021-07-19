@@ -5,7 +5,7 @@ class StartScene : public Scene
 {
 public:
 	StartScene();
-	StartScene(stack<Scene*>* scenes, RenderWindow* window);
+	StartScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem);
 	~StartScene();
 
 private:

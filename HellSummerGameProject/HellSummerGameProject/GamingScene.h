@@ -4,7 +4,7 @@ class GamingScene : public Scene
 {
 public:
 	GamingScene();
-	GamingScene(stack<Scene*>* scenes, RenderWindow* window);
+	GamingScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem);
 	virtual ~GamingScene();
 private:
 	Music music;

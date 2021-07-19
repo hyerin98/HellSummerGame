@@ -25,120 +25,168 @@
     <Filter Include="소스 파일\03. Object">
       <UniqueIdentifier>{55092b54-93da-455e-a0b6-353aef618bb6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\01. Scene\Monster Scene">
+    <Filter Include="소스 파일\03. Object\00. Object">
+      <UniqueIdentifier>{245a2e8e-cfee-4abf-ba38-65c660e2b207}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\01. Character">
+      <UniqueIdentifier>{e73979b9-7743-4a9b-b2b0-91a9cd9b5129}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\02. ButtonObject">
+      <UniqueIdentifier>{de4f30e1-e719-408d-8388-623357936c9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\03. TextObject">
+      <UniqueIdentifier>{440a2bc8-a724-48bf-b86f-2efe80039f8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Scene\00. StartScene">
       <UniqueIdentifier>{4fc34b08-0990-43b5-a96d-3834047ae8c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Scene\01. LobbyScene">
+      <UniqueIdentifier>{ab6eb593-81c9-47a8-9328-e42834c5c6b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Scene\02. GamingScene">
+      <UniqueIdentifier>{4847080d-6379-49a0-ae17-9bbb7630babb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Scene\03. ResultScene">
+      <UniqueIdentifier>{c265d3c3-de59-4d86-a7b2-b9edb9c17dba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Scene\04. CharacterScene">
+      <UniqueIdentifier>{d686f701-24fa-4d96-95f3-51e577bffbb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Scene\05. MonsterScene">
+      <UniqueIdentifier>{ddcff9b7-fee2-4ab6-98ec-edc128b99a8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\04. AnimationObject">
+      <UniqueIdentifier>{5b44cb69-b6d7-45e4-87e7-668ff14a034b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\05. BackGroundObject">
+      <UniqueIdentifier>{5ff4840b-e821-4f60-b6fe-fda111cf8497}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\06. PassPoint">
+      <UniqueIdentifier>{3c35a216-05ea-4791-aa23-e837cf32b1b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04. System">
+      <UniqueIdentifier>{e94aff12-8011-4187-be5b-412cc0e75ebc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04. System\00. SoundSystem">
+      <UniqueIdentifier>{b18a468a-25ac-4f57-a962-776a29ac0b01}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>소스 파일\00. Main</Filter>
     </ClCompile>
-    <ClCompile Include="CharacterScene.cpp">
-      <Filter>소스 파일\01. Scene</Filter>
-    </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>소스 파일\01. Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="StartScene.cpp">
-      <Filter>소스 파일\01. Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="GamingScene.cpp">
       <Filter>소스 파일\01. Scene</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>소스 파일\02. Engine</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
-      <Filter>소스 파일\03. Object</Filter>
-    </ClCompile>
-    <ClCompile Include="AnimationObject.cpp">
-      <Filter>소스 파일\03. Object</Filter>
-    </ClCompile>
-    <ClCompile Include="BackGroundObject.cpp">
-      <Filter>소스 파일\03. Object</Filter>
+      <Filter>소스 파일\03. Object\00. Object</Filter>
     </ClCompile>
     <ClCompile Include="Character.cpp">
-      <Filter>소스 파일\03. Object</Filter>
-    </ClCompile>
-    <ClCompile Include="LobbyScene.cpp">
-      <Filter>소스 파일\01. Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="ResultScene.cpp">
-      <Filter>소스 파일\01. Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Monster1.cpp">
-      <Filter>소스 파일\01. Scene\Monster Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Monster2.cpp">
-      <Filter>소스 파일\01. Scene\Monster Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Monster3.cpp">
-      <Filter>소스 파일\01. Scene\Monster Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="PassPoint.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\03. Object\01. Character</Filter>
     </ClCompile>
     <ClCompile Include="Button.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\03. Object\02. ButtonObject</Filter>
     </ClCompile>
     <ClCompile Include="TextObject.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\03. Object\03. TextObject</Filter>
+    </ClCompile>
+    <ClCompile Include="StartScene.cpp">
+      <Filter>소스 파일\01. Scene\00. StartScene</Filter>
+    </ClCompile>
+    <ClCompile Include="LobbyScene.cpp">
+      <Filter>소스 파일\01. Scene\01. LobbyScene</Filter>
+    </ClCompile>
+    <ClCompile Include="GamingScene.cpp">
+      <Filter>소스 파일\01. Scene\02. GamingScene</Filter>
+    </ClCompile>
+    <ClCompile Include="ResultScene.cpp">
+      <Filter>소스 파일\01. Scene\03. ResultScene</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterScene.cpp">
+      <Filter>소스 파일\01. Scene\04. CharacterScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster1.cpp">
+      <Filter>소스 파일\01. Scene\05. MonsterScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster2.cpp">
+      <Filter>소스 파일\01. Scene\05. MonsterScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster3.cpp">
+      <Filter>소스 파일\01. Scene\05. MonsterScene</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationObject.cpp">
+      <Filter>소스 파일\03. Object\04. AnimationObject</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGroundObject.cpp">
+      <Filter>소스 파일\03. Object\05. BackGroundObject</Filter>
+    </ClCompile>
+    <ClCompile Include="PassPoint.cpp">
+      <Filter>소스 파일\03. Object\06. PassPoint</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundSystem.cpp">
+      <Filter>소스 파일\04. System\00. SoundSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
       <Filter>소스 파일\00. Main</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterScene.h">
-      <Filter>소스 파일\01. Scene</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>소스 파일\01. Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="StartScene.h">
-      <Filter>소스 파일\01. Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="GamingScene.h">
       <Filter>소스 파일\01. Scene</Filter>
     </ClInclude>
     <ClInclude Include="Engine.h">
       <Filter>소스 파일\02. Engine</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
-      <Filter>소스 파일\03. Object</Filter>
-    </ClInclude>
-    <ClInclude Include="AnimationObject.h">
-      <Filter>소스 파일\03. Object</Filter>
-    </ClInclude>
-    <ClInclude Include="BackGroundObject.h">
-      <Filter>소스 파일\03. Object</Filter>
+      <Filter>소스 파일\03. Object\00. Object</Filter>
     </ClInclude>
     <ClInclude Include="Character.h">
-      <Filter>소스 파일\03. Object</Filter>
-    </ClInclude>
-    <ClInclude Include="LobbyScene.h">
-      <Filter>소스 파일\01. Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="ResultScene.h">
-      <Filter>소스 파일\01. Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Monster1.h">
-      <Filter>소스 파일\01. Scene\Monster Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Monster2.h">
-      <Filter>소스 파일\01. Scene\Monster Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Monster3.h">
-      <Filter>소스 파일\01. Scene\Monster Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="PassPoint.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\03. Object\01. Character</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\03. Object\02. ButtonObject</Filter>
     </ClInclude>
     <ClInclude Include="TextObject.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\03. Object\03. TextObject</Filter>
+    </ClInclude>
+    <ClInclude Include="StartScene.h">
+      <Filter>소스 파일\01. Scene\00. StartScene</Filter>
+    </ClInclude>
+    <ClInclude Include="LobbyScene.h">
+      <Filter>소스 파일\01. Scene\01. LobbyScene</Filter>
+    </ClInclude>
+    <ClInclude Include="GamingScene.h">
+      <Filter>소스 파일\01. Scene\02. GamingScene</Filter>
+    </ClInclude>
+    <ClInclude Include="ResultScene.h">
+      <Filter>소스 파일\01. Scene\03. ResultScene</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterScene.h">
+      <Filter>소스 파일\01. Scene\04. CharacterScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster1.h">
+      <Filter>소스 파일\01. Scene\05. MonsterScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster2.h">
+      <Filter>소스 파일\01. Scene\05. MonsterScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster3.h">
+      <Filter>소스 파일\01. Scene\05. MonsterScene</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationObject.h">
+      <Filter>소스 파일\03. Object\04. AnimationObject</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGroundObject.h">
+      <Filter>소스 파일\03. Object\05. BackGroundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="PassPoint.h">
+      <Filter>소스 파일\03. Object\06. PassPoint</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundSystem.h">
+      <Filter>소스 파일\04. System\00. SoundSystem</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

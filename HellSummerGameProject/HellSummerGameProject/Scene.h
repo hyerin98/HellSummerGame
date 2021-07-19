@@ -2,6 +2,7 @@
 #include "BackgroundObject.h"
 #include "Button.h"
 #include "TextObject.h"
+#include "SoundSystem.h"
 
 class Object;
 
@@ -9,10 +10,12 @@ class Scene
 {
 public:
 	Scene();
-	Scene(stack<Scene*>* scenes, RenderWindow* window);
+	Scene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem);
 	virtual ~Scene();
 
 protected:
+	// 사운드 추가
+	SoundSystem* soundSystem = nullptr;
 	// 배경화면
 	Object * backGround = nullptr;
 
@@ -34,7 +37,7 @@ protected:
 	// 마우스의 위치 (게임 창 내에서의)
 	Vector2f mousePosition{ 0.f, 0.f };
 
-	bool quit = false;
+	bool Quit = false;
 
 	//vector<Object*> vObjects;
 
@@ -46,7 +49,7 @@ private:
 	virtual void Init();
 
 public:
-	bool GetQuit() const;
+	bool GetQuit();
 	void EndScene();
 	
 	virtual void Input(Event* e);

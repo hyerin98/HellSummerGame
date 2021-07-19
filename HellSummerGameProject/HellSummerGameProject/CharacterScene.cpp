@@ -7,8 +7,8 @@ CharacterScene::CharacterScene()
 	Init();
 }
 
-CharacterScene::CharacterScene(stack<Scene*>* scenes, RenderWindow* window)
-	:Scene(scenes, window)
+CharacterScene::CharacterScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
+	:Scene(scenes, window, soundSystem)
 {
 	Init();
 }

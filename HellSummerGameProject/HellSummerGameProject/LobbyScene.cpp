@@ -8,8 +8,8 @@ LobbyScene::LobbyScene()
 	Init();
 }
 
-LobbyScene::LobbyScene(stack<Scene*>* scenes, RenderWindow* window)
-	:Scene(scenes, window)
+LobbyScene::LobbyScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
+	:Scene(scenes, window, soundSystem)
 {
 	Init();
 }
@@ -38,11 +38,13 @@ void LobbyScene::Input(Event* e)
 {
 	switch (e->key.code)
 	{
-	case Keyboard::Space:
+	case Keyboard::Enter:
 	{
-		scenes->push(new GamingScene(scenes,window));
+		scenes->push(new GamingScene(scenes,window, soundSystem));
 		break;
 	}
+	default:
+		break;
 	}
 }
 

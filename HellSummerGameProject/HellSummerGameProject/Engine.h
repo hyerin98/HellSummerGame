@@ -1,4 +1,5 @@
 #pragma once
+#include "SoundSystem.h"
 
 class Scene;
 
@@ -7,16 +8,21 @@ class Engine final // final : 더 이상 이 클래스에게 상속받지 않는다.
 {
 public: /* 생성자, 소멸자 */
 	Engine();
+	Engine(const Engine&) = delete;
+	Engine& operator=(const Engine&) = delete;
 	~Engine();
 
 private: /* 멤버 변수 */
 	RenderWindow* window = nullptr;
-	Event e;
-
-	Clock timer;
-	float deltaTime = 0.f;
 
 	stack<Scene*> scenes;
+	SoundSystem* soundSystem = nullptr;
+	Event* e = nullptr;
+
+	Clock* timer = nullptr;
+	float deltaTime = 0.f;
+	float elapsedTime = 0.f;
+
 
 private: /* 메소드 */
 	

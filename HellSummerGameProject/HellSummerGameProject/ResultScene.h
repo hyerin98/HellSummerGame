@@ -4,7 +4,7 @@ class ResultScene : public Scene
 {
 public:
 	ResultScene();
-	ResultScene(stack<Scene*>* scenes, RenderWindow* window);
+	ResultScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem);
 	~ResultScene();
 private:
 	virtual void Init();

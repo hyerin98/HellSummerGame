@@ -4,7 +4,7 @@ class LobbyScene : public Scene
 {
 public:
 	LobbyScene();
-	LobbyScene(stack<Scene*>* scenes, RenderWindow* window);
+	LobbyScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem);
 	~LobbyScene();
 
 private:

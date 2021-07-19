@@ -8,8 +8,8 @@ StartScene::StartScene()
 	Init();
 }
 
-StartScene::StartScene(stack<Scene*>* scenes, RenderWindow* window)
-	:Scene(scenes, window)
+StartScene::StartScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
+	:Scene(scenes, window, soundSystem)
 {
 	Init();
 }
@@ -22,7 +22,7 @@ void StartScene::Init()
 {
 	backGround = new BackGroundObject("Textures/Title.png");
 
-	mTexts["TITLE"] = new TextObject("Press Space Keys!!", "Font/BubbleFont.ttf", Vector2f(600.f, 590.f));
+	mTexts["TITLE"] = new TextObject("Press Enter Keys!!", "Font/BubbleFont.ttf", Vector2f(600.f, 590.f));
 }
 
 void StartScene::Destroy()
@@ -38,11 +38,13 @@ void StartScene::Input(Event* e)
 		scenes->top()->EndScene();
 		break;
 	}
-	default:
+	case Keyboard::Enter:
 	{
-		scenes->push(new LobbyScene(scenes, window));
+		scenes->push(new LobbyScene(scenes, window, soundSystem));
 		break;
 	}
+	default:
+		break;
 	}
 }
 

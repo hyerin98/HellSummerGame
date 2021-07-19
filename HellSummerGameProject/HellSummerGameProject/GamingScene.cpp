@@ -15,8 +15,8 @@ GamingScene::GamingScene()
 	Init();
 }
 
-GamingScene::GamingScene(stack<Scene*>* scenes, RenderWindow* window)
-	:Scene(scenes, window)
+GamingScene::GamingScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
+	:Scene(scenes, window, soundSystem)
 {
 	Init();
 }
@@ -45,11 +45,13 @@ void GamingScene::Input(Event* e)
 {
 	switch (e->key.code)
 	{
-	case Keyboard::Q:
+	case Keyboard::Enter:
 	{
-		scenes->push(new ResultScene(scenes,window));
+		scenes->push(new ResultScene(scenes,window, soundSystem));
 		break;
 	}
+	default:
+		break;
 	}
 }
 

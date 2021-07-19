@@ -8,8 +8,8 @@ ResultScene::ResultScene()
 	Init();
 }
 
-ResultScene::ResultScene(stack<Scene*>* scenes, RenderWindow* window)
-	:Scene(scenes, window)
+ResultScene::ResultScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
+	:Scene(scenes, window, soundSystem)
 {
 	Init();
 }
@@ -33,11 +33,13 @@ void ResultScene::Input(Event* e)
 		scenes->top()->EndScene();
 		break;
 	}
-	default:
+	case Keyboard::Enter:
 	{
-		scenes->push(new StartScene(scenes,window));
+		scenes->push(new StartScene(scenes, window, soundSystem));
 		break;
 	}
+	default:
+		break;
 	}
 }
 
