@@ -40,12 +40,12 @@ protected:
 
 	float frameTime = 0.2f;
 	unsigned int keyFrame = 0;
-	float speed = 10.f;
+	//float speed = 10.f;
 
-	Vector2f position{ 200.f, 0.f };
+	Vector2f position{ 450.f, 575.f };
 	Vector2f velocity{ 0.f, 0.f };
 	Vector2f acceleration{ 0.f, 0.f };
-	//float speed = 50.f;
+	float speed = 50.f;
 	float gravity = 2.f;
 	int jumpCount = 2;
 
