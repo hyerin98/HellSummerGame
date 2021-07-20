@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "Engine.h"
 #include "StartScene.h"
+#include "PracticeScene.h"
 
 Engine::Engine()
 {
@@ -16,31 +17,36 @@ void Engine::Init()
 {
 	this->window = new RenderWindow(VideoMode(1200, 700), "Oo Bubble Bobble oO");
 	window->setFramerateLimit(60);
-	window->setMouseCursorVisible(true);
-
 	this->e = new Event;
-	this->timer = new Clock;
+	this->clock = new Clock;
 
 	// 윈도우창 아이콘 꾸미기
 	Image icon;
 	icon.loadFromFile("Textures/icon.png");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
-
-	// 배경음악
-	soundSystem = new SoundSystem("Sound/start.flac");
+	
+	soundSystem = new SoundSystem("Sound/Click.wav", false);
 	soundSystem->AddEffectSound("Sound/Click.wav", "Click");
-	// 시작화면
-	scenes.push(new StartScene(&scenes, window, soundSystem));
+	//soundSystem->AddEffectSound("Sound/CoinGet.wav", "CoinGet");
 
+	//scenes.push(new PracticeScene(&scenes, window, soundSystem));
+	scenes.push(new StartScene(&scenes, window, soundSystem));
 	soundSystem->Play();
 }
 
 void Engine::Destroy()
 {
-	DELETE(timer);
+	DELETE(clock);
 	DELETE(e);
 	DELETE(window);
 
+	for (size_t i = 0; i < scenes.size(); ++i)
+	{
+		scenes.top()->Destroy();
+		scenes.top() = nullptr;
+		delete scenes.top();
+		scenes.pop();
+	}
 	soundSystem->Destroy();
 }
 
@@ -52,16 +58,19 @@ void Engine::Input()
 		{
 		case Event::Closed:
 		{
-			window->close();
+			this->window->close();
 			break;
 		}
-		case Event::MouseButtonPressed:
 		case Event::KeyPressed:
+		case Event::MouseButtonPressed:
+		case Event::MouseWheelMoved:
 		{
+			// Scene InputUpdate();
 			if (!scenes.empty())
 			{
 				scenes.top()->Input(e);
 			}
+			break;
 		}
 		default:
 			break;
@@ -71,21 +80,24 @@ void Engine::Input()
 
 void Engine::Update()
 {
-	this->deltaTime = timer->getElapsedTime().asSeconds();
-	timer->restart();
-
-	Input();
+	this->deltaTime = clock->getElapsedTime().asSeconds();
+	clock->restart();
+	this->elapsedTime += deltaTime;
+	this->mousePosition = window->mapPixelToCoords(Mouse::getPosition(*window));
 
 	if (!scenes.empty())
 	{
-		scenes.top()->Update(deltaTime);
-
-		if (this->scenes.top()->GetQuit())
+		if (scenes.top()->GetQuit())
 		{
-			// 현재 실행중인 scene을 종료한다
-			delete this->scenes.top();
-			this->scenes.pop();
-			cout << "Pop Scene\n";
+			scenes.top()->Destroy();
+			scenes.top() = nullptr;
+			delete scenes.top();
+			scenes.pop();
+		}
+		else
+		{
+			scenes.top()->Update(deltaTime);
+			scenes.top()->Update(mousePosition);
 		}
 	}
 	else
@@ -94,21 +106,25 @@ void Engine::Update()
 	}
 }
 
-void Engine::Render()
+bool Engine::Render()
 {
-	while (window->isOpen())
+	if (window->isOpen())
 	{
 		window->clear();
+
+		Input();
 		Update();
 
 		if (!scenes.empty())
 		{
 			scenes.top()->Render();
 		}
-		else
-		{
-			window->close();
-		}
+
 		window->display();
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }

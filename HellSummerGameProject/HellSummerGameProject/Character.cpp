@@ -1,58 +1,84 @@
 #include "framework.h"
 #include "Character.h"
+#define FLOOR_Y 575.f
 
-Character::Character()
+Character::Character(int chracterClass)
 {
-	Init();
-}
+	string filePath;
+	string fileType = { ".png" };
 
-Character::~Character()
-{
-}
+	switch (characterClass)
+	{
+	case PLAYER_BUBBLUN:
+	{
+		filePath = { "Textures/Player_Bubblun/" };
+		break;
+	}
+	/*case PLAYER_BOBBLUN:
+	{
+		filePath={"Textures/"}
+	}*/
+	}
 
-void Character::Init()
-{
-	Texture* tx = nullptr;
-	char filePath[50];
+	Texture* texture = nullptr;
+
 	for (int i = 0; i < 6; i++)
 	{
-		sprintf(filePath, "Textures/runright/%02d.png",i);
-		tx = new Texture;
-		tx->loadFromFile(filePath);
-		this->runrightAnimation.push_back(tx);
+		texture = new Texture;
+		texture->loadFromFile(filePath + "MOVE_RIGHT0" + to_string(i) + fileType);
+		this->move_rightAnimation.push_back(texture);
 	}
 
 	for (int i = 0; i < 5; i++)
 	{
-		sprintf(filePath, "Textures/runleft/%02d.png", i);
-		tx = new Texture;
-		tx->loadFromFile(filePath);
-		this->runleftAnimation.push_back(tx);
+		texture = new Texture;
+		texture->loadFromFile(filePath + "MOVE_LEFT0" + to_string(i) + fileType);
+		this->move_leftAnimation.push_back(texture);
+	}
+
+	for (int i = 0; i < 8; i++)
+	{
+		texture = new Texture;
+		texture->loadFromFile(filePath + "JUMP_RIGHT0" + to_string(i) + fileType);
+		this->jump_rightAnimation.push_back(texture);
+	}
+
+	for (int i = 0; i < 8; i++)
+	{
+		texture = new Texture;
+		texture->loadFromFile(filePath + "JUMP_LEFT0" + to_string(i) + fileType);
+		this->jump_leftAnimation.push_back(texture);
 	}
 
 	for (int i = 0; i < 4; i++)
 	{
-		sprintf(filePath, "Textures/attackright/%02d.png", i);
-		tx = new Texture;
-		tx->loadFromFile(filePath);
-		this->attackrightAnimation.push_back(tx);
+		texture = new Texture;
+		texture->loadFromFile(filePath + "ATTACK_RIGHT0" + to_string(i) + fileType);
+		this->attack_rightAnimation.push_back(texture);
 	}
 
 	for (int i = 0; i < 4; i++)
 	{
-		sprintf(filePath, "Textures/attackleft/%02d.png", i);
-		tx = new Texture;
-		tx->loadFromFile(filePath);
-		this->attackleftAnimation.push_back(tx);
+		texture = new Texture;
+		texture->loadFromFile(filePath + "ATTACK_LEFT0" + to_string(i) + fileType);
+		this->attack_leftAnimation.push_back(texture);
 	}
 
+	Init();
+}
 
-	stateAnimation.insert({ RUNRIGHT,runrightAnimation }); // stateAnimation[RUN] = runAnimation; 이렇게 써도 같은말. 둘 중 편한거로 쓰자
-	stateAnimation[RUNLEFT] = runleftAnimation;
-	stateAnimation[ATTACKRIGHT] = attackrightAnimation;
-	stateAnimation[ATTACKLEFT] = attackleftAnimation;
+void Character::Init()
+{
+	stateAnimation[MOVE_RIGHT] = &move_rightAnimation;
+	stateAnimation[MOVE_LEFT] = &move_leftAnimation;
+	stateAnimation[JUMP_RIGHT] = &jump_rightAnimation;
+	stateAnimation[JUMP_LEFT] = &jump_leftAnimation;
+	stateAnimation[ATTACK_RIGHT] = &attack_rightAnimation;
+	stateAnimation[ATTACK_LEFT] = &attack_leftAnimation;
 
-	setScale(Vector2f(0.2f, 0.2f));
+	setTexture(*move_rightAnimation.data()[1]);
+	setOrigin(Vector2f(getGlobalBounds().width / 2.f, getGlobalBounds().height));
+	//setScale(Vector2f(0.2f, 0.2f));
 	setPosition(Vector2f(450.f, 575.f));
 }
 
@@ -61,71 +87,123 @@ void Character::Destroy()
 	AnimationObject::Destroy();
 }
 
-//void Character::MoveUpdate() // 점프
-//{
-//	if (position.y < 200.f)
-//	{
-//		// -10 -> -8 -> -6 ... 
-//		velocity.y += gravity;
-//	}
-//	else if (position.y > 200.f)
-//	{
-//		// 바닥으로 꺼지는 것을 막기위한 행동
-//		position.y = 200.f;
-//	}
-//
-//	velocity += acceleration;
-//
-//	position += velocity;
-//
-//	setPosition(position);
-//}
+void Character::MoveUpdate(const float& deltaTime)
+{
+	if (position.y < FLOOR_Y)
+	{
+		// -10 -> -8 -> -6 ... 
+		// 위로 점프하기 위한 행동
+		velocity.y += gravity * speed * deltaTime;
+	}
+	else if (position.y > FLOOR_Y)
+	{
+		// 바닥으로 꺼지는 것을 막기위한 행동
+		position.y = FLOOR_Y;
+	}
+
+	velocity += acceleration * speed * deltaTime;
+
+	position += velocity;
+
+	setPosition(position);
+}
+
+void Character::Jump()
+{
+	if (--jumpCount > 0)
+	{
+		velocity.y = -20.f;
+	}
+}
+
 
 void Character::Update(const float& deltaTime)
 {
+	AnimationObject::Update(deltaTime);
+	MoveUpdate(deltaTime);
+	static int count = 0;
+
+	static float elapsedTime = 0;
+	elapsedTime += deltaTime;
+
+
+
+	if (position.y < FLOOR_Y - 30.f)
+	{
+		characterState = JUMP_RIGHT;
+		characterState = JUMP_LEFT;
+	}
+	else
+	{
+		jumpCount = 2;
+	}
+	cout << "JumpCount = " << jumpCount << endl;
+
 	if (Keyboard::isKeyPressed(Keyboard::Right))
 	{
-		state = RUNRIGHT;
-		move(1.0f, 0.f);
+		characterState = MOVE_RIGHT;
+		move({ 1.f, 0.f });
 
 		if (Keyboard::isKeyPressed(Keyboard::X))
 		{
-			state = ATTACKRIGHT;
+			characterState = ATTACK_RIGHT;
 		}
 	}
 
 	if (Keyboard::isKeyPressed(Keyboard::Left))
 	{
-		state = RUNLEFT;
+		characterState = MOVE_LEFT;
 		move(-1.0f, 0.f);
 
 		if (Keyboard::isKeyPressed(Keyboard::X))
 		{
-			state = ATTACKLEFT;
+			characterState = ATTACK_LEFT;
 		}
 	}
 
-	//if (Keyboard::isKeyPressed(Keyboard::Space)) // 점프
-	//{
-	//	// SFML 좌표계 좌상단이 0, 0
-	//	velocity.y = -1.0f;
-	//}
-	//MoveUpdate();
-
-	elapsedTime += deltaTime;
-
-	if (elapsedTime > 0.13f)
+	/*if (Keyboard::isKeyPressed(Keyboard::Space) && Keyboard::isKeyPressed(Keyboard::Right))
 	{
-		// stateAnimation 이라는 컨테이너 안에 객체 하나씩을 부른다. 이것을 animation
-		for (auto& animation : stateAnimation) // stateAnimation 안에 있는 객체들을 animation 하나씩 불러올수있음
+		characterState = JUMP_RIGHT;
+	}
+
+	if (Keyboard::isKeyPressed(Keyboard::Space) && Keyboard::isKeyPressed(Keyboard::Left))
+	{
+		characterState = JUMP_LEFT;
+	}*/
+
+	if (Keyboard::isKeyPressed(Keyboard::Space) && jumpCount !=2)
+	{
+		characterState = JUMP_RIGHT;
+	}
+
+	if (elapsedTime >= frameTime)
+	{
+		for (auto& animation : stateAnimation)
 		{
-			// animation 은 이렇게 되어있음 : <state(first), animationVector(second)> 앞에가 first, 뒤에가 second
-			if (animation.first == state) // animation안의 first가 현재상태와 똑같다면
+			if (animation.first == characterState)
 			{
-				setTexture(*animation.second.data()[keyFrame % animation.second.size()]);
+				setTexture(*animation.second->data()[keyFrame % animation.second->size()]);
+				oldState = animation.first;
+			}
+			else if (characterState == IDLE)
+			{
+				setTexture(*stateAnimation[oldState]->data()[1]);
 			}
 		}
 		++keyFrame;
 		elapsedTime = 0.f;
 	}
+}
+
+void Character::Update(const Vector2f& mousePosition)
+{
+	AnimationObject::Update(mousePosition);
+}
+
+void Character::Attack()
+{
+}
+
+void Character::Render(RenderTarget* target)
+{
 }

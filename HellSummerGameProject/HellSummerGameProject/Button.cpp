@@ -1,25 +1,7 @@
 #include "framework.h"
 #include "Button.h"
 
-Button::Button()
-{
-	Init();
-}
-
 Button::Button(const string& idleTexturePath, const string& activeTexturePath, const Vector2f& position)
-{
-	Init(idleTexturePath, activeTexturePath, position);
-}
-
-Button::~Button()
-{
-}
-
-void Button::Init()
-{
-}
-
-void Button::Init(const string& idleTexturePath, const string& activeTexturePath, const Vector2f& position)
 {
 	idleTexture = new Texture;
 	idleTexture->loadFromFile(idleTexturePath);
@@ -28,43 +10,49 @@ void Button::Init(const string& idleTexturePath, const string& activeTexturePath
 	activeTexture->loadFromFile(activeTexturePath);
 
 	setTexture(*idleTexture);
-
-	setOrigin(idleTexture->getSize().x / 2.f, idleTexture->getSize().y / 2.f);
-
+	setOrigin(getGlobalBounds().width / 2.f, getGlobalBounds().height / 2.f);
 	setPosition(position);
 }
 
 void Button::Destroy()
 {
+	DELETE(idleTexture);
+	DELETE(activeTexture);
 }
 
 bool Button::IsPressed()
 {
-	return isPressed;
-}
-
-void Button::Update(const float& deltaTime)
-{
+	return isPress;
 }
 
 void Button::Update(const Vector2f& mousePosition)
 {
-	isPressed = false;
+	isPress = false;
 
 	if (getGlobalBounds().contains(mousePosition))
 	{
 		if (Mouse::isButtonPressed(Mouse::Left))
 		{
-			isPressed = true;
+			isPress = true;
 		}
 	}
 
-	if (isPressed)
+	if (isPress)
 	{
-		setTexture(*activeTexture);
+		//setTexture(*activeTexture);
+		setScale({ 0.8f, 0.8f });
 	}
 	else
 	{
-		setTexture(*idleTexture);
+		setScale({ 1.f, 1.f });
+		//setTexture(*idleTexture);
+	}
+}
+
+void Button::Render(RenderTarget* target)
+{
+	if (target)
+	{
+		target->draw(*this);
 	}
 }

@@ -5,9 +5,13 @@ int main()
 {
 	Engine engine;
 
-	engine.Render();
+	while (engine.Render());
 
-	engine.Destroy();
+	//Engine engine;
+
+	//engine.Render();
+
+	//engine.Destroy();
 
 	// 바운딩 박스
 	//RenderWindow window(VideoMode(600, 600), "Window");

@@ -3,11 +3,6 @@
 #include "BackGroundObject.h"
 #include "GamingScene.h"
 
-LobbyScene::LobbyScene()
-{
-	Init();
-}
-
 LobbyScene::LobbyScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
 	:Scene(scenes, window, soundSystem)
 {

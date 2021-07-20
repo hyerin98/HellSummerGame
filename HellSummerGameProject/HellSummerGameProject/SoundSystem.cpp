@@ -1,6 +1,8 @@
 #include "framework.h"
 #include "SoundSystem.h"
 
+// 사운드가 많아지면 여기서 관리하면됨 (사운드는 여러개지만, 사운드시스템은 1개로 규칙)
+
 SoundSystem::SoundSystem()
 {
 	Init();
@@ -14,7 +16,6 @@ SoundSystem::SoundSystem(const string& soundFilePath, bool loop)
 
 SoundSystem::~SoundSystem()
 {
-	
 }
 
 void SoundSystem::Init()
@@ -64,7 +65,7 @@ void SoundSystem::AddEffectSound(const string& soundFilePath, const string& effe
 
 	effectSound[effectName]->setBuffer(*effectSoundBuffer[effectName]);
 	effectSound[effectName]->setVolume(effectVolume);
-	effectSound[effectName]->setLoop(false);
+	effectSound[effectName]->setLoop(false); 
 }
 
 void SoundSystem::EffectPlay(const string& effectName)

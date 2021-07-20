@@ -1,16 +1,7 @@
 #include "framework.h"
 #include "TextObject.h"
 
-TextObject::TextObject()
-{
-}
-
 TextObject::TextObject(const string& text, const string& fontFilePath, const Vector2f& position)
-{
-	Init(text, fontFilePath, position);
-}
-
-void TextObject::Init(const string& text, const string& fontFilePath, const Vector2f& position)
 {
 	font = new Font;
 	font->loadFromFile(fontFilePath);
@@ -19,4 +10,37 @@ void TextObject::Init(const string& text, const string& fontFilePath, const Vect
 	this->setFillColor(Color::White);
 	this->setOrigin(getLocalBounds().width / 2.f, getLocalBounds().height / 2.f);
 	this->setPosition(position);
+}
+
+TextObject::~TextObject()
+{
+}
+
+void TextObject::Destroy()
+{
+	DELETE(font);
+}
+
+bool TextObject::IsActive() const
+{
+	return isActive;
+}
+
+void TextObject::SetActive(bool active)
+{
+	this->isActive = active;
+}
+
+void TextObject::Update()
+{
+
+}
+
+void TextObject::Render(RenderTarget* target)
+{
+	if (target && isActive)
+	{
+		target->draw(*this);
+	}
+
 }

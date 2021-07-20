@@ -1,12 +1,7 @@
 #include "framework.h"
 #include "Scene.h"
-#include "Object.h"
-#include "TextObject.h"
-
-Scene::Scene()
-{
-	Init();
-}
+//#include "Object.h"
+//#include "TextObject.h"
 
 Scene::Scene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
 	:scenes(scenes), window(window), soundSystem(soundSystem)
@@ -14,12 +9,13 @@ Scene::Scene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSyst
 	Init();
 }
 
-Scene::~Scene()
+void Scene::Init()
 {
 }
 
-void Scene::Init()
+void Scene::EndScene()
 {
+	this->Quit = true;
 }
 
 bool Scene::GetQuit() 
@@ -27,112 +23,82 @@ bool Scene::GetQuit()
 	return Quit;
 }
 
-void Scene::EndScene()
+void Scene::Destroy()
 {
-	Quit = true;
+	if (backGround)
+	{
+		backGround->Destroy();
+	}
+
+	for (auto& obj : objects)
+	{
+		obj->Destroy();
+	}
 }
 
 void Scene::Input(Event* e)
 {
+	switch (e->type)
+	{
+	case Event::KeyPressed:
+	{
+		break;
+	}
+
+	case Event::MouseButtonPressed:
+	{
+		break;
+	}
+	default:
+		break;
+	}
+}
+
+void Scene::Update(const Vector2f& mousePosition)
+{
+	for (auto& obj : objects)
+	{
+		obj->Update(mousePosition);
+	}
+
+	for (auto& btn : buttons)
+	{
+		btn.second->Update(mousePosition);
+	}
 }
 
 void Scene::Update(const float& deltaTime)
 {
-	mousePosition = window->mapPixelToCoords(Mouse::getPosition(*window));
-
-	if (Mouse::isButtonPressed(Mouse::Right))
-	{
-		cout << mousePosition.x << " " << mousePosition.y << endl;
-	}
-
-	for (auto& btn : mButtons)
-	{
-		btn.second->Update(mousePosition);
-	}
-
-	for (auto& obj : animationObjects)
-	{
-		if (obj->IsActive())
-		{
-			obj->Update(deltaTime);
-			if (obj->GetHitBoxActive())
-			{
-				obj->UpdateHitBox();
-			}
-		}
-	}
-
-	for (auto& obj : staticObjects)
-	{
-		if (obj->IsActive())
-		{
-			obj->Update(deltaTime);
-			if (obj->GetHitBoxActive())
-			{
-				obj->UpdateHitBox();
-			}
-		}
-	}
-
-	/*for (auto& obj : vObjects)
+	for (auto& obj : objects)
 	{
 		obj->Update(deltaTime);
-	}*/
+	}
+
+	for (auto& txt : texts)
+	{
+		txt.second->Update();
+	}
 }
 
 void Scene::Render()
 {
 	if (backGround)
 	{
-		window->draw(*backGround);
+		backGround->Render(window);
 	}
 
-	for (auto& obj : animationObjects)
+	for (auto& obj : objects)
 	{
-		if (obj->IsActive())
-		{
-			window->draw(*obj);
-			if (obj->GetHitBoxActive())
-			{
-				window->draw(obj->GetHitBox(), 5, LinesStrip);
-			}
-		}
+		obj->Render(window);
 	}
 
-	for (auto& obj : staticObjects)
+	for (auto& btn : buttons)
 	{
-		if (obj->IsActive())
-		{
-			window->draw(*obj);
-			if (obj->GetHitBoxActive())
-			{
-				window->draw(obj->GetHitBox(), 5, LinesStrip);
-			}
-		}
+		btn.second->Render(window);
 	}
 
-	for (auto& btn : mButtons)
+	for (auto& txt : texts)
 	{
-		window->draw(*btn.second);
+		txt.second->Render(window);
 	}
-
-	for (auto& txt : mTexts)
-	{
-		window->draw(*txt.second);
-	}
-
-	/*if (backGround)
-	{
-		window->draw(*backGround);
-	}
-
-	for (auto& obj : vObjects)
-	{
-		window->draw(*obj);
-	}
-
-	for (auto& txt : mTexts)
-	{
-		window->draw(*txt.second);
-	}*/
 }

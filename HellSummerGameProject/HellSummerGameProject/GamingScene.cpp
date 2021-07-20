@@ -8,46 +8,58 @@
 #include "Monster3.h"
 #include "PassPoint.h"
 
-#define PI 3.13459f
-
-GamingScene::GamingScene()
-{
-	Init();
-}
-
 GamingScene::GamingScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
 	:Scene(scenes, window, soundSystem)
 {
 	Init();
 }
 
-GamingScene::~GamingScene()
-{
-}
-
 void GamingScene::Init()
 {
 	backGround = new BackGroundObject("Textures/map.png");
-	animationObjects.push_back(new Character);
-	animationObjects.push_back(new Monster1);
-	animationObjects.push_back(new Monster2);
-	animationObjects.push_back(new Monster3);
-	animationObjects.push_back(new PassPoint);
+	
+	character = new Character(PLAYER_BUBBLUN);
+	character->setScale(0.2f, 0.2f);
 
-	mTexts["Score"] = new TextObject("Score : ", "Font/BubbleFont.ttf", Vector2f(160.f, 130.f));
+	/*gameView = new View(viewRect);
+	gameView->setCenter(character->getPosition());
+	window->setView(*gameView);
+	gameView->zoom(0.3f);*/
+	// texts["Score"] = new TextObject("Score : ", "Font/BubbleFont.ttf", Vector2f(160.f, 130.f));
 }
 
 void GamingScene::Destroy()
 {
+	Scene::Destroy();
+	character->Destroy();
 }
 
 void GamingScene::Input(Event* e)
 {
-	switch (e->key.code)
+	switch (e->type)
 	{
-	case Keyboard::Enter:
+	case Event::KeyPressed:
 	{
-		scenes->push(new ResultScene(scenes,window, soundSystem));
+		switch (e->key.code)
+		{
+		case Keyboard::Escape:
+		{
+			EndScene();
+			break;
+		}
+		case Keyboard::F1:
+		{
+			soundSystem->VolumeDown();
+			break;
+		}
+		case Keyboard::F2:
+		{
+			soundSystem->VolumeUp();
+			break;
+		}
+		default:
+			break;
+		}
 		break;
 	}
 	default:
@@ -55,57 +67,42 @@ void GamingScene::Input(Event* e)
 	}
 }
 
+void GamingScene::Update(const Vector2f& mousePosition)
+{
+	Scene::Update(mousePosition);
+	character->Update(mousePosition);
+}
+
 void GamingScene::Update(const float& deltaTime)
 {
-	static float elapsedTime = 0.f;
-
-	if ((elapsedTime += deltaTime) >= 1.f)
-	{
-		//staticObjects.data()[5]->setTextureRect(IntRect(0, 0, staticObjects.data()[5]->getTextureRect().width - 10, staticObjects.data()[5]->getTextureRect().height));
-		//staticObjects.data()[5]->setPosition(staticObjects.data()[5]->getGlobalBounds().left + staticObjects.data()[2]->getGlobalBounds().width, staticObjects.data()[5]->getPosition().y);
-		elapsedTime = 0.f;
-	}
-
 	Scene::Update(deltaTime);
+	character->Update(deltaTime);
+	/*gameView->setCenter(character->getPosition());
+	window->setView(*gameView);*/
+
+	
 }
 
 void GamingScene::Render()
 {
+	Scene::Render();
+
 	if (backGround)
 	{
 		window->draw(*backGround);
 	}
-
-	for (auto& obj : animationObjects)
+	if (character)
 	{
-		if (obj->IsActive())
-		{
-			window->draw(*obj);
-			if (obj->GetHitBoxActive())
-			{
-				window->draw(obj->GetHitBox(), 5, LinesStrip);
-			}
-		}
+		window->draw(*character);
 	}
+	
 
-	for (auto& obj : staticObjects)
-	{
-		if (obj->IsActive())
-		{
-			window->draw(*obj);
-			if (obj->GetHitBoxActive())
-			{
-				window->draw(obj->GetHitBox(), 5, LinesStrip);
-			}
-		}
-	}
-
-	for (auto& btn : mButtons)
+	for (auto& btn : buttons)
 	{
 		window->draw(*btn.second);
 	}
 
-	for (auto& txt : mTexts)
+	for (auto& txt : texts)
 	{
 		window->draw(*txt.second);
 	}

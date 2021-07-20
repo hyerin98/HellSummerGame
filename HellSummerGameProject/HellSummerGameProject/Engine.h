@@ -1,5 +1,5 @@
 #pragma once
-#include "SoundSystem.h"
+#include "Scene.h"
 
 class Scene;
 
@@ -14,12 +14,13 @@ public: /* 생성자, 소멸자 */
 
 private: /* 멤버 변수 */
 	RenderWindow* window = nullptr;
-
-	stack<Scene*> scenes;
 	SoundSystem* soundSystem = nullptr;
-	Event* e = nullptr;
+	stack<Scene*> scenes;
 
-	Clock* timer = nullptr;
+	Event* e = nullptr;
+	Vector2f mousePosition{ 0.f, 0.f };
+
+	Clock* clock = nullptr;
 	float deltaTime = 0.f;
 	float elapsedTime = 0.f;
 
@@ -29,6 +30,9 @@ private: /* 메소드 */
 	// 엔진을 초기화 하는 함수
 	void Init();
 
+	// 엔진이 없어지기 전에 호출되는 함수
+	void Destroy();
+
 	// 윈도우상의 입력값을 처리한다.
 	void Input();
 
@@ -37,9 +41,6 @@ private: /* 메소드 */
 
 public:
 
-	// 엔진이 없어지기 전에 호출되는 함수
-	void Destroy();
-
 	// 윈도우에 결과물을 출력한다.
-	void Render();
+	bool Render();
 };

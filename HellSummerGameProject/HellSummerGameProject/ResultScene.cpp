@@ -3,11 +3,6 @@
 #include "LobbyScene.h"
 #include "StartScene.h"
 
-ResultScene::ResultScene()
-{
-	Init();
-}
-
 ResultScene::ResultScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
 	:Scene(scenes, window, soundSystem)
 {

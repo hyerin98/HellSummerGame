@@ -1,9 +1,48 @@
 #include "framework.h"
 #include "Object.h"
 
-bool Object::IsActive()
+Object::Object()
 {
-    return isActive;
+	vertices = new Vertex[5];
+}
+
+Object::Object(const string& textureFilePath)
+{
+	this->texture = new Texture;
+
+	if (this->texture->loadFromFile(textureFilePath))
+	{
+		setTexture(*this->texture);
+
+		// GlobalBoundBox
+		auto gbb = this->getGlobalBounds();
+
+		setOrigin(gbb.width / 2.f, gbb.height / 2.f);
+
+		vertices = new Vertex[5];
+		vertices[0] = (Vertex(Vector2f(gbb.left, gbb.top), boxColor));
+		vertices[1] = (Vertex(Vector2f(gbb.left + gbb.width, gbb.top), boxColor));
+		vertices[2] = (Vertex(Vector2f(gbb.left + gbb.width, gbb.top + gbb.height), boxColor));
+		vertices[3] = (Vertex(Vector2f(gbb.left, gbb.top + gbb.height), boxColor));
+		vertices[4] = (Vertex(Vector2f(gbb.left, gbb.top), boxColor));
+	}
+}
+
+Object::Object(const string& textureFilePath, const Vector2f& position)
+	:Object(textureFilePath)
+{
+	setPosition(position);
+}
+
+void Object::Destroy()
+{
+	DELETE(texture);
+	DELETE(vertices);
+}
+
+void Object::SetDebugBoxActive(bool isActive)
+{
+	this->debugBox = isActive;
 }
 
 void Object::SetActive(bool isActive)
@@ -11,33 +50,45 @@ void Object::SetActive(bool isActive)
     this->isActive = isActive;
 }
 
-bool Object::GetHitBoxActive()
+void Object::SetBoxColor(const Color& color)
 {
-    return hitBoxActive;
+	this->boxColor = color;
 }
 
-void Object::SetHitBoxActive(bool active)
+void Object::SetBoxColor(const Uint8& r, const Uint8& g, const Uint8& b, const Uint8& a)
 {
-    hitBoxActive = active;
+	SetBoxColor(Color(r, g, b, a));
 }
 
-const Vertex* Object::GetHitBox()
+void Object::Update(const float& deltaTime)
 {
-    return hitBox;
-}
-
-void Object::UpdateHitBox()
-{
-	if (this->hitBoxActive)
-	{
-		hitBox[0] = Vertex(Vector2f(getGlobalBounds().left, getGlobalBounds().top), Color::Red);
-		hitBox[1] = Vertex(Vector2f(getGlobalBounds().left + getGlobalBounds().width, getGlobalBounds().top), Color::Blue);
-		hitBox[2] = Vertex(Vector2f(getGlobalBounds().left + getGlobalBounds().width, getGlobalBounds().top + getGlobalBounds().height), Color::Green);
-		hitBox[3] = Vertex(Vector2f(getGlobalBounds().left, getGlobalBounds().top + getGlobalBounds().height), Color::Magenta);
-		hitBox[4] = hitBox[0];
-	}
+	auto gbb = this->getGlobalBounds();
+	vertices[0] = (Vertex(Vector2f(gbb.left, gbb.top), boxColor));
+	vertices[1] = (Vertex(Vector2f(gbb.left + gbb.width, gbb.top), boxColor));
+	vertices[2] = (Vertex(Vector2f(gbb.left + gbb.width, gbb.top + gbb.height), boxColor));
+	vertices[3] = (Vertex(Vector2f(gbb.left, gbb.top + gbb.height), boxColor));
+	vertices[4] = (Vertex(Vector2f(gbb.left, gbb.top), boxColor));
 }
 
 void Object::Update(const Vector2f& mousePosition)
 {
+	auto gbb = this->getGlobalBounds();
+	vertices[0] = (Vertex(Vector2f(gbb.left, gbb.top), boxColor));
+	vertices[1] = (Vertex(Vector2f(gbb.left + gbb.width, gbb.top), boxColor));
+	vertices[2] = (Vertex(Vector2f(gbb.left + gbb.width, gbb.top + gbb.height), boxColor));
+	vertices[3] = (Vertex(Vector2f(gbb.left, gbb.top + gbb.height), boxColor));
+	vertices[4] = (Vertex(Vector2f(gbb.left, gbb.top), boxColor));
+}
+
+void Object::Render(RenderTarget* target)
+{
+	if (target && isActive)
+	{
+		target->draw(*this);
+
+		if (vertices && debugBox)
+		{
+			target->draw(this->vertices, 5, LinesStrip);
+		}
+	}
 }

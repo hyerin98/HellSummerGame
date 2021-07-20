@@ -145,6 +145,7 @@
     <ClCompile Include="AnimationObject.cpp" />
     <ClCompile Include="BackGroundObject.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="ButtonObject.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="CharacterScene.cpp" />
     <ClCompile Include="Engine.cpp" />
@@ -156,6 +157,7 @@
     <ClCompile Include="Monster3.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="PassPoint.cpp" />
+    <ClCompile Include="PracticeScene.cpp" />
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SoundSystem.cpp" />
@@ -166,6 +168,7 @@
     <ClInclude Include="AnimationObject.h" />
     <ClInclude Include="BackGroundObject.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="ButtonObject.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="CharacterScene.h" />
     <ClInclude Include="Engine.h" />
@@ -177,6 +180,7 @@
     <ClInclude Include="Monster3.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="PassPoint.h" />
+    <ClInclude Include="PracticeScene.h" />
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SoundSystem.h" />

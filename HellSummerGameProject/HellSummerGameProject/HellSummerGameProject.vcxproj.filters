@@ -87,9 +87,6 @@
     <ClCompile Include="Character.cpp">
       <Filter>소스 파일\03. Object\01. Character</Filter>
     </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>소스 파일\03. Object\02. ButtonObject</Filter>
-    </ClCompile>
     <ClCompile Include="TextObject.cpp">
       <Filter>소스 파일\03. Object\03. TextObject</Filter>
     </ClCompile>
@@ -129,6 +126,15 @@
     <ClCompile Include="SoundSystem.cpp">
       <Filter>소스 파일\04. System\00. SoundSystem</Filter>
     </ClCompile>
+    <ClCompile Include="PracticeScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>소스 파일\03. Object\02. ButtonObject</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -145,9 +151,6 @@
     </ClInclude>
     <ClInclude Include="Character.h">
       <Filter>소스 파일\03. Object\01. Character</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>소스 파일\03. Object\02. ButtonObject</Filter>
     </ClInclude>
     <ClInclude Include="TextObject.h">
       <Filter>소스 파일\03. Object\03. TextObject</Filter>
@@ -187,6 +190,15 @@
     </ClInclude>
     <ClInclude Include="SoundSystem.h">
       <Filter>소스 파일\04. System\00. SoundSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="PracticeScene.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>소스 파일\03. Object\02. ButtonObject</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonObject.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
