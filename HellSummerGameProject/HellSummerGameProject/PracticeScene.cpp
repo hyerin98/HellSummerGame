@@ -2,6 +2,7 @@
 #include "PracticeScene.h"
 #include "Button.h"
 #include "GamingScene.h"
+#include "JumpObject.h"
 
 PracticeScene::PracticeScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
 	:Scene(scenes, window, soundSystem)
@@ -11,13 +12,12 @@ PracticeScene::PracticeScene(stack<Scene*>* scenes, RenderWindow* window, SoundS
 
 void PracticeScene::Init()
 {
-
 	bts["Button!"] = new Button("Textures/startbutton1.png","Textures/startbutton2.png", { 200.f,200.f });
 	
-	doll = new Object("Textures/test.png");
+	doll = new JumpObject("Textures/test.png", {500.f, 500.f});
 	portal = new Object("Textures/04.png");
 
-	doll->setPosition(500.f, 500.f);
+	// doll->setPosition(500.f, 500.f);
 	portal->setPosition(50.f, 500.f);
 	
 }
@@ -32,6 +32,31 @@ void PracticeScene::Destroy()
 
 void PracticeScene::Input(Event* e)
 {
+	switch (e->type)
+	{
+	case Event::KeyPressed:
+	{
+		switch (e->key.code)
+		{
+			case Keyboard::Space:
+			{
+				// Down Casting을 해주자
+				dynamic_cast<JumpObject*>(doll)->Jump();
+				break;
+			}
+			default:
+				break;
+		}
+		break;
+	}
+
+	case Event::MouseButtonPressed:
+	{
+		break;
+	}
+	default:
+		break;
+	}
 }
 
 void PracticeScene::Update(const sf::Vector2f& mousePosition)
@@ -52,14 +77,6 @@ void PracticeScene::Update(const float& deltaTime)
 {
 	if (doll)
 	{
-		if (Keyboard::isKeyPressed(Keyboard::A))
-		{
-			doll->move({ -3.f,0.f });
-		}
-		if (Keyboard::isKeyPressed(Keyboard::D))
-		{
-			doll->move({ +3.f,0.f });
-		}
 		doll->Update(deltaTime);
 	}
 

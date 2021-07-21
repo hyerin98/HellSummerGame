@@ -70,6 +70,12 @@
     <Filter Include="소스 파일\04. System\00. SoundSystem">
       <UniqueIdentifier>{b18a468a-25ac-4f57-a962-776a29ac0b01}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01. Scene\06. PracticeScene">
+      <UniqueIdentifier>{23218964-0819-4327-873b-1d951448fcc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\07. JumpObject">
+      <UniqueIdentifier>{e82febfe-77d9-47b3-8623-651a9b231a54}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -126,14 +132,17 @@
     <ClCompile Include="SoundSystem.cpp">
       <Filter>소스 파일\04. System\00. SoundSystem</Filter>
     </ClCompile>
-    <ClCompile Include="PracticeScene.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>소스 파일\03. Object\02. ButtonObject</Filter>
     </ClCompile>
     <ClCompile Include="ButtonObject.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\03. Object\02. ButtonObject</Filter>
+    </ClCompile>
+    <ClCompile Include="PracticeScene.cpp">
+      <Filter>소스 파일\01. Scene\06. PracticeScene</Filter>
+    </ClCompile>
+    <ClCompile Include="JumpObject.cpp">
+      <Filter>소스 파일\03. Object\07. JumpObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -191,14 +200,17 @@
     <ClInclude Include="SoundSystem.h">
       <Filter>소스 파일\04. System\00. SoundSystem</Filter>
     </ClInclude>
-    <ClInclude Include="PracticeScene.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>소스 파일\03. Object\02. ButtonObject</Filter>
     </ClInclude>
     <ClInclude Include="ButtonObject.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\03. Object\02. ButtonObject</Filter>
+    </ClInclude>
+    <ClInclude Include="PracticeScene.h">
+      <Filter>소스 파일\01. Scene\06. PracticeScene</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpObject.h">
+      <Filter>소스 파일\03. Object\07. JumpObject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
