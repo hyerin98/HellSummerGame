@@ -15,7 +15,7 @@ public:
 private:
 	map<string, Button*> bts;
 	Object* doll = nullptr;
-	Object* potal = nullptr;
+	Object* portal = nullptr;
 
 private:
 	virtual void Init();

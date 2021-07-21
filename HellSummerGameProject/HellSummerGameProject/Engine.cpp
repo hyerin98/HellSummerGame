@@ -15,7 +15,7 @@ Engine::~Engine()
 
 void Engine::Init()
 {
-	this->window = new RenderWindow(VideoMode(1200, 700), "Oo Bubble Bobble oO");
+	this->window = new RenderWindow(VideoMode(1080, 800), "Oo Bubble Bobble oO");
 	window->setFramerateLimit(60);
 	this->e = new Event;
 	this->clock = new Clock;
@@ -30,7 +30,7 @@ void Engine::Init()
 	//soundSystem->AddEffectSound("Sound/CoinGet.wav", "CoinGet");
 
 	//scenes.push(new PracticeScene(&scenes, window, soundSystem));
-	scenes.push(new StartScene(&scenes, window, soundSystem));
+	scenes.push(new PracticeScene(&scenes, window, soundSystem));
 	soundSystem->Play();
 }
 
