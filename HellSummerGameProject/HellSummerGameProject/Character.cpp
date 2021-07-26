@@ -98,8 +98,9 @@ void Character::Update(const float& deltaTime)
 	if (Keyboard::isKeyPressed(Keyboard::Space))
 	{
 		characterState = JUMP_RIGHT;
+		characterState = JUMP_LEFT;
 		Jump();
-		cout << "jump" << endl;
+		cout << "jump right" << endl;
 	}
 
 	if (Keyboard::isKeyPressed(Keyboard::Right))
@@ -111,6 +112,12 @@ void Character::Update(const float& deltaTime)
 		{
 			characterState = ATTACK_RIGHT;
 		}
+		if (Keyboard::isKeyPressed(Keyboard::Space))
+		{
+			characterState = JUMP_RIGHT;
+			Jump();
+			cout << "jump right" << endl;
+		}
 	}
 
 	if (Keyboard::isKeyPressed(Keyboard::Left))
@@ -121,6 +128,13 @@ void Character::Update(const float& deltaTime)
 		if (Keyboard::isKeyPressed(Keyboard::X))
 		{
 			characterState = ATTACK_LEFT;
+		}
+
+		if (Keyboard::isKeyPressed(Keyboard::Space))
+		{
+			characterState = JUMP_LEFT;
+			Jump();
+			cout << "jump left" << endl;
 		}
 	}
 

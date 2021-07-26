@@ -29,8 +29,8 @@ void Engine::Init()
 	soundSystem->AddEffectSound("Sound/Click.wav", "Click");
 	soundSystem->AddEffectSound("Sound/CoinGet.wav", "CoinGet");
 
-	//scenes.push(new PracticeScene(&scenes, window, soundSystem));
-	scenes.push(new StartScene(&scenes, window, soundSystem));
+	scenes.push(new PracticeScene(&scenes, window, soundSystem));
+	//scenes.push(new StartScene(&scenes, window, soundSystem));
 	soundSystem->Play();
 }
 
