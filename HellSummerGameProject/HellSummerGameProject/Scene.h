@@ -4,6 +4,8 @@
 #include "TextObject.h"
 #include "SoundSystem.h"
 
+class Object;
+
 class Scene
 {
 public:

@@ -1,8 +1,7 @@
 #include "framework.h"
 #include "Character.h"
-#define FLOOR_Y 575.f
 
-Character::Character(int chracterClass)
+Character::Character(int characterClass)
 {
 	string filePath;
 	string fileType = { ".png" };
@@ -16,7 +15,6 @@ Character::Character(int chracterClass)
 	}
 	/*case PLAYER_BOBBLUN:
 	{
-		filePath={"Textures/"}
 	}*/
 	}
 
@@ -28,7 +26,7 @@ Character::Character(int chracterClass)
 		texture->loadFromFile(filePath + "MOVE_RIGHT0" + to_string(i) + fileType);
 		this->move_rightAnimation.push_back(texture);
 	}
-
+		
 	for (int i = 0; i < 5; i++)
 	{
 		texture = new Texture;
@@ -36,27 +34,13 @@ Character::Character(int chracterClass)
 		this->move_leftAnimation.push_back(texture);
 	}
 
-	//for (int i = 0; i < 8; i++)
-	//{
-	//	texture = new Texture;
-	//	texture->loadFromFile(filePath + "JUMP_RIGHT0" + to_string(i) + fileType);
-	//	this->jump_rightAnimation.push_back(texture);
-	//}
-
-	//for (int i = 0; i < 8; i++)
-	//{
-	//	texture = new Texture;
-	//	texture->loadFromFile(filePath + "JUMP_LEFT0" + to_string(i) + fileType);
-	//	this->jump_leftAnimation.push_back(texture);
-	//}
-
 	for (int i = 0; i < 4; i++)
 	{
 		texture = new Texture;
 		texture->loadFromFile(filePath + "ATTACK_RIGHT0" + to_string(i) + fileType);
 		this->attack_rightAnimation.push_back(texture);
 	}
-
+		
 	for (int i = 0; i < 4; i++)
 	{
 		texture = new Texture;
@@ -64,22 +48,38 @@ Character::Character(int chracterClass)
 		this->attack_leftAnimation.push_back(texture);
 	}
 
+
+	for (int i = 0; i < 8; i++)
+	{
+		texture = new Texture;
+		texture->loadFromFile(filePath + "JUMP_RIGHT0" + to_string(i) + fileType);
+		this->jump_rightAnimation.push_back(texture);
+	}
+
+
+	for (int i = 0; i < 8; i++)
+	{
+		texture = new Texture;
+		texture->loadFromFile(filePath + "JUMP_LEFT0" + to_string(i) + fileType);
+		this->jump_leftAnimation.push_back(texture);
+	}
+
 	Init();
 }
 
 void Character::Init()
 {
+
 	stateAnimation[MOVE_RIGHT] = &move_rightAnimation;
 	stateAnimation[MOVE_LEFT] = &move_leftAnimation;
-	//stateAnimation[JUMP_RIGHT] = &jump_rightAnimation;
-	//stateAnimation[JUMP_LEFT] = &jump_leftAnimation;
 	stateAnimation[ATTACK_RIGHT] = &attack_rightAnimation;
 	stateAnimation[ATTACK_LEFT] = &attack_leftAnimation;
+	stateAnimation[JUMP_RIGHT] = &jump_rightAnimation;
+	stateAnimation[JUMP_LEFT] = &jump_leftAnimation;
 
 	setTexture(*move_rightAnimation.data()[1]);
 	setOrigin(Vector2f(getGlobalBounds().width / 2.f, getGlobalBounds().height));
-	//setScale(Vector2f(0.2f, 0.2f));
-	setPosition(Vector2f(450.f, 575.f));
+	setPosition(450.f, 575.f);
 }
 
 void Character::Destroy()
@@ -87,62 +87,25 @@ void Character::Destroy()
 	AnimationObject::Destroy();
 }
 
-//void Character::MoveUpdate(const float& deltaTime)
-//{
-//	if (position.y < FLOOR_Y)
-//	{
-//		// -10 -> -8 -> -6 ... 
-//		// 위로 점프하기 위한 행동
-//		velocity.y += gravity * speed * deltaTime;
-//	}
-//	else if (position.y > FLOOR_Y)
-//	{
-//		// 바닥으로 꺼지는 것을 막기위한 행동
-//		position.y = FLOOR_Y;
-//	}
-//
-//	velocity += acceleration * speed * deltaTime;
-//
-//	position += velocity;
-//
-//	setPosition(position);
-//}
-//
-//void Character::Jump()
-//{
-//	if (--jumpCount > 0)
-//	{
-//		velocity.y = -20.f;
-//	}
-//}
-
-
 void Character::Update(const float& deltaTime)
 {
 	AnimationObject::Update(deltaTime);
-	//MoveUpdate(deltaTime);
-	static int count = 0;
 
-	static float elapsedTime = 0;
+	static float elapsedTime = 0.f;
 	elapsedTime += deltaTime;
+	MoveUpdate(deltaTime);
 
-
-
-	/*if (position.y < FLOOR_Y - 30.f)
+	if (Keyboard::isKeyPressed(Keyboard::Space))
 	{
 		characterState = JUMP_RIGHT;
-		characterState = JUMP_LEFT;
+		Jump();
+		cout << "jump" << endl;
 	}
-	else
-	{
-		jumpCount = 2;
-	}
-	cout << "JumpCount = " << jumpCount << endl;*/
 
 	if (Keyboard::isKeyPressed(Keyboard::Right))
 	{
 		characterState = MOVE_RIGHT;
-		move({ 1.f, 0.f });
+		position += {2.f, 0.f};
 
 		if (Keyboard::isKeyPressed(Keyboard::X))
 		{
@@ -153,7 +116,7 @@ void Character::Update(const float& deltaTime)
 	if (Keyboard::isKeyPressed(Keyboard::Left))
 	{
 		characterState = MOVE_LEFT;
-		move(-1.0f, 0.f);
+		position -= {2.f, 0.f};
 
 		if (Keyboard::isKeyPressed(Keyboard::X))
 		{
@@ -161,19 +124,9 @@ void Character::Update(const float& deltaTime)
 		}
 	}
 
-	/*if (Keyboard::isKeyPressed(Keyboard::Space) && Keyboard::isKeyPressed(Keyboard::Right))
+	/*else
 	{
-		characterState = JUMP_RIGHT;
-	}
-
-	if (Keyboard::isKeyPressed(Keyboard::Space) && Keyboard::isKeyPressed(Keyboard::Left))
-	{
-		characterState = JUMP_LEFT;
-	}
-
-	if (Keyboard::isKeyPressed(Keyboard::Space) && jumpCount !=2)
-	{
-		characterState = JUMP_RIGHT;
+		characterState = IDLE;
 	}*/
 
 	if (elapsedTime >= frameTime)
@@ -195,9 +148,35 @@ void Character::Update(const float& deltaTime)
 	}
 }
 
+void Character::Jump()
+{
+	velocity.y = -10.f;
+}
+
+void Character::MoveUpdate(const float& deltaTime)
+{
+	if (position.y < 575.f)
+	{
+		velocity.y += gravity * speed * deltaTime;
+	}
+	else if (position.y > 575)
+	{
+		position.y = 575;
+	}
+
+	velocity += acceleration * speed * deltaTime;
+
+	position += velocity;
+
+	setPosition(position);
+
+}
+
 void Character::Update(const Vector2f& mousePosition)
 {
 	AnimationObject::Update(mousePosition);
+
+	
 }
 
 void Character::Attack()
@@ -206,4 +185,6 @@ void Character::Attack()
 
 void Character::Render(RenderTarget* target)
 {
+	AnimationObject::Render(target);
 }
+

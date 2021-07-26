@@ -1,6 +1,6 @@
 #include "framework.h"
 #include "Scene.h"
-//#include "Object.h"
+#include "Object.h"
 //#include "TextObject.h"
 
 Scene::Scene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)

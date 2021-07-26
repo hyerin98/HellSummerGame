@@ -3,6 +3,12 @@
 
 int main()
 {
+	/*Engine engine;
+
+	engine.Render();
+
+	engine.Destroy();*/
+
 	Engine engine;
 
 	while (engine.Render());

@@ -2,6 +2,9 @@
 #include "Scene.h"
 
 class Character;
+class Monster1;
+class Monster2;
+class Monster3;
 class TileMap;
 
 class GamingScene : public Scene
@@ -12,6 +15,9 @@ public:
 	virtual ~GamingScene() = default;
 private:
 	Character* character = nullptr;
+	Monster1* monster1 = nullptr;
+	Monster2* monster2 = nullptr;
+	Monster3* monster3 = nullptr;
 
 	// Map Variables
 
