@@ -2,31 +2,21 @@
 #include "PracticeScene.h"
 #include "GamingScene.h"
 #include "JumpObject.h"
-#include "PracticeMap.h"
-#include "Object.h"
 
 
 PracticeScene::PracticeScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
 	:Scene(scenes, window, soundSystem)
 {
-    Init();
+	Init();
 }
 
 void PracticeScene::Init()
 {
-	vector<int> levels;
-    
-	for (int i = 0; i < 30 * 30; ++i)
-	{
-		levels.push_back(56);
-	}
+	doll = new JumpObject("Textures/doll.png", { 500.f, 500.f });
+	portal = new Object("Textures/portal.png");
 
-	map = new PracticeMap("Textures/Map/tileSet.png", { 32,32 }, levels, { 30,30 });
-
-	mouseCursor = new Object("Textures/Map/tileSet.png");
-	mouseCursor->setOrigin({});
-	mouseCursor->setTextureRect({map->GetTile(tileNumber)});
-
+	doll->setScale(1.f, 1.f);
+	portal->setPosition(50.f, 500.f);
 }
 
 void PracticeScene::Destroy()
@@ -45,16 +35,10 @@ void PracticeScene::Input(Event* event)
 		{
 		case Keyboard::Space:
 		{
-
-		}
-		case Keyboard::F1:
-		{
-			map->SaveMap("Test.bin");
+			// Down Casting
+			dynamic_cast<JumpObject*>(doll)->Jump();
 			break;
 		}
-		case Keyboard::F2:
-			map->LoadMap("Test.bin");
-			break;
 		default:
 			break;
 		}
@@ -66,57 +50,53 @@ void PracticeScene::Input(Event* event)
 	{
 		break;
 	}
-	case Event::MouseWheelMoved:
-	{
-		tileNumber += event->mouseWheel.delta;
-
-		if (tileNumber <= 56)
-		{
-			tileNumber = 56;
-		}
-		else if (tileNumber >= 56 * 23 - 1)
-		{
-			tileNumber = 56 * 23 - 1;
-		}
-
-		mouseCursor->setTextureRect(map->GetTile(tileNumber));
-		break;
-	}
 	default:
 		break;
 	}
-  
 }
 
 void PracticeScene::Update(const Vector2f& mousePosition)
 {
-	mouseCursor->setPosition(mousePosition.x+32, mousePosition.y-32);
-	if (map)
+	if (doll)
 	{
-		if (Mouse::isButtonPressed(Mouse::Left))
-		{
-			map->Update(mousePosition, tileNumber);
-		}
-    }
+		dynamic_cast<JumpObject*>(doll)->TargetMove(mousePosition);
+	}
 }
 
 void PracticeScene::Update(const float& deltaTime)
 {
-	if (mouseCursor)
+	if (doll)
 	{
-		mouseCursor->Update(deltaTime);
+		doll->Update(deltaTime);
+	}
+
+	if (portal)
+	{
+		portal->Update(deltaTime);
+	}
+
+	if (portal && doll)
+	{
+		if (portal->getGlobalBounds().contains(doll->getPosition()))
+		{
+			if (Keyboard::isKeyPressed(Keyboard::W))
+			{
+				scenes->push(new GamingScene(scenes, window, soundSystem));
+			}
+		}
 	}
 }
 
 void PracticeScene::Render()
 {
-    if (map)
-    {
-        window->draw(*map);
-    }
-
-	if (mouseCursor)
+	if (portal)
 	{
-		mouseCursor->Render(window);
+		portal->Render(window);
 	}
+
+	if (doll)
+	{
+		doll->Render(window);
+	}
+
 }

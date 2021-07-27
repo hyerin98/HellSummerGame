@@ -1,38 +1,35 @@
 #pragma once
 #include "Scene.h"
 
-class PracticeMap;
-class Object;
+class TileMap;
 
 class PracticeScene : public Scene
 {
 public:
 
-    PracticeScene() = delete;
-    PracticeScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem);
-    PracticeScene(const PracticeScene&) = delete;
-    PracticeScene& operator=(const PracticeScene&) = delete;
-    virtual ~PracticeScene() = default;
+	PracticeScene() = delete;
+	PracticeScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem);
+	PracticeScene(const PracticeScene&) = delete;
+	PracticeScene& operator=(const PracticeScene&) = delete;
+	virtual ~PracticeScene() = default;
 
 private:
 
-    PracticeMap* map = nullptr;
-    int tileNumber = 111;
-
-    Object* mouseCursor = nullptr;
+	Object* doll = nullptr;
+	Object* portal = nullptr;
 
 private:
 
-    virtual void Init();
+	virtual void Init();
 
 public:
 
-    virtual void Destroy();
+	virtual void Destroy();
 
-    virtual void Input(Event* event);
+	virtual void Input(Event* event);
 
-    virtual void Update(const Vector2f& mousePosition);
-    virtual void Update(const float& deltaTime);
+	virtual void Update(const Vector2f& mousePosition);
+	virtual void Update(const float& deltaTime);
 
-    virtual void Render();
+	virtual void Render();
 };
