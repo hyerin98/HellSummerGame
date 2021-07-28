@@ -88,6 +88,7 @@ void GamingScene::Update(const float& deltaTime)
 	character->Update(deltaTime);
 	monster1->Update(deltaTime);
 	monster2->Update(deltaTime);
+	monster3->Update(deltaTime);
 	/*gameView->setCenter(character->getPosition());
 	window->setView(*gameView);*/
 
