@@ -11,7 +11,8 @@ enum CHARACTER_STATE
 	JUMP_RIGHT,
 	JUMP_LEFT,
 	ATTACK_RIGHT,
-	ATTACK_LEFT
+	ATTACK_LEFT,
+	DIE
 };
 
 enum CHARACTER_CLASS
@@ -36,6 +37,7 @@ protected:
 	vector<Texture*> attack_leftAnimation;
 	vector<Texture*> jump_rightAnimation;
 	vector<Texture*> jump_leftAnimation;
+	vector<Texture*> die_Animation;
 
 	Vector2f position{ 450.f, 575.f };
 	Vector2f velocity{ 0.f,0.f };

@@ -78,6 +78,7 @@ void Character::Init()
 	stateAnimation[ATTACK_LEFT] = &attack_leftAnimation;
 	stateAnimation[JUMP_RIGHT] = &jump_rightAnimation;
 	stateAnimation[JUMP_LEFT] = &jump_leftAnimation;
+	stateAnimation[DIE] = &die_Animation;
 
 	setTexture(*move_rightAnimation.data()[1]);
 	setOrigin(Vector2f(getGlobalBounds().width / 2.f, getGlobalBounds().height));

@@ -105,6 +105,16 @@ void GamingScene1::Update(const float& deltaTime)
 			}
 		}
 	}
+
+	if (character && monster1)
+	{
+		if (monster1->getGlobalBounds().contains(character->getPosition()))
+		{
+			character = new Character(DIE);
+			cout << "die" << endl;
+		}
+		
+	}
 	/*gameView->setCenter(character->getPosition());
 	window->setView(*gameView);*/	
 }
