@@ -76,6 +76,9 @@
     <Filter Include="소스 파일\03. Object\07. JumpObject">
       <UniqueIdentifier>{e82febfe-77d9-47b3-8623-651a9b231a54}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\03. Object\08. BulletObject">
+      <UniqueIdentifier>{c34c18ca-e409-4eed-ac63-bb48e9633eca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -147,6 +150,12 @@
     <ClCompile Include="PracticeMap.cpp">
       <Filter>소스 파일\01. Scene\06. PracticeScene</Filter>
     </ClCompile>
+    <ClCompile Include="BulletManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>소스 파일\03. Object\08. BulletObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -217,6 +226,12 @@
     </ClInclude>
     <ClInclude Include="PracticeMap.h">
       <Filter>소스 파일\01. Scene\06. PracticeScene</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>소스 파일\03. Object\08. BulletObject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -144,6 +144,8 @@
   <ItemGroup>
     <ClCompile Include="AnimationObject.cpp" />
     <ClCompile Include="BackGroundObject.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ButtonObject.cpp" />
     <ClCompile Include="Character.cpp" />
@@ -169,6 +171,8 @@
   <ItemGroup>
     <ClInclude Include="AnimationObject.h" />
     <ClInclude Include="BackGroundObject.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletManager.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="ButtonObject.h" />
     <ClInclude Include="Character.h" />

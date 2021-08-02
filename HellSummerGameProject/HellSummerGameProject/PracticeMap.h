@@ -9,6 +9,7 @@ public:
 	~PracticeMap() = default;
 
 private:
+
 	// TileSet : 타일 텍스쳐 이미지
 	Texture* tileSet = nullptr;
 
@@ -24,16 +25,18 @@ private:
 	IntRect imageRect;
 
 private:
+
 	void InitVertices();
 
 public:
 
-	void Update(const Vector2f& mousePosition, int tileNmber);
+	void Update(const Vector2f& mousePosition, int tileNumber);
 
 	const IntRect& GetTile(int tileNumber);
 
 	void SaveMap(const string& mapName);
 	void LoadMap(const string& mapName);
-	virtual void draw(RenderTarget& target, RenderStates states) const;
-};
 
+	virtual void draw(RenderTarget& target, RenderStates states) const;
+
+};
