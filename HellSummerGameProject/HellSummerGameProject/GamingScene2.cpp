@@ -1,23 +1,22 @@
 #include "framework.h"
-#include "GamingScene.h"
-#include "Character.h"
+#include "GamingScene2.h"
 #include "BackGroundObject.h"
-#include "ResultScene.h"
 #include "Monster1.h"
 #include "Monster2.h"
 #include "Monster3.h"
-#include "PassPoint.h"
+#include "Character.h"
+#include "ResultScene.h"
 
-GamingScene::GamingScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
+GamingScene2::GamingScene2(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
 	:Scene(scenes, window, soundSystem)
 {
 	Init();
 }
 
-void GamingScene::Init()
+void GamingScene2::Init()
 {
-	backGround = new BackGroundObject("Textures/map.png");
-	
+	backGround = new BackGroundObject("Textures/pinkmap.png");
+
 	character = new Character(PLAYER_BUBBLUN);
 	character->setScale(0.18f, 0.18f);
 
@@ -30,20 +29,17 @@ void GamingScene::Init()
 	monster3 = new Monster3(MONSTER_MONSTER3);
 	monster3->setScale(0.18f, 0.18f);
 
-	/*gameView = new View(viewRect);
-	gameView->setCenter(character->getPosition());
-	window->setView(*gameView);
-	gameView->zoom(0.3f);
-	 texts["Score"] = new TextObject("Score : ", "Font/BubbleFont.ttf", Vector2f(160.f, 130.f));*/
+	portal = new Object("Textures/portal.png");
+	portal->setPosition(1080.f, 600.f);
 }
 
-void GamingScene::Destroy()
+void GamingScene2::Destroy()
 {
 	Scene::Destroy();
 	character->Destroy();
 }
 
-void GamingScene::Input(Event* e)
+void GamingScene2::Input(Event* e)
 {
 	switch (e->type)
 	{
@@ -76,34 +72,47 @@ void GamingScene::Input(Event* e)
 	}
 }
 
-void GamingScene::Update(const Vector2f& mousePosition)
+void GamingScene2::Update(const Vector2f& mousePosition)
 {
 	Scene::Update(mousePosition);
 	character->Update(mousePosition);
 }
 
-void GamingScene::Update(const float& deltaTime)
+void GamingScene2::Update(const float& deltaTime)
 {
 	Scene::Update(deltaTime);
 	character->Update(deltaTime);
 	monster1->Update(deltaTime);
 	monster2->Update(deltaTime);
 	monster3->Update(deltaTime);
-	/*gameView->setCenter(character->getPosition());
-	window->setView(*gameView);*/
+	portal->Update(deltaTime);
 
-	
+	if (character && portal)
+	{
+		if (portal->getGlobalBounds().contains(character->getPosition()))
+		{
+			if (Keyboard::isKeyPressed(Keyboard::Up))
+			{
+				scenes->push(new ResultScene(scenes, window, soundSystem));
+			}
+		}
+	}
 }
 
-void GamingScene::Render()
+void GamingScene2::Render()
 {
-
 	if (backGround)
 	{
 		window->draw(*backGround);
 	}
 
 	Scene::Render();
+
+	if (portal)
+	{
+		portal->Render(window);
+	}
+
 	if (character)
 	{
 		character->Render(window);
@@ -123,15 +132,4 @@ void GamingScene::Render()
 	{
 		monster3->Render(window);
 	}
-
-	for (auto& btn : buttons)
-	{
-		window->draw(*btn.second);
-	}
-
-	for (auto& txt : texts)
-	{
-		window->draw(*txt.second);
-	}
-
 }

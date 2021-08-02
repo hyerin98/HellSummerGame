@@ -49,7 +49,7 @@ void PracticeScene::Input(Event* event)
 			//testBullet->SetSpeed(200.f);
 			//testBullet->SetDirection({ 1.f,0.f });
 
-			bulletMgr->Shoot({1.f, 0.f}, { player->getPosition()}, 200.f);
+			bulletMgr->Shoot({1.f, 0.f}, {player->getPosition()}, 200.f);
 		}
 		case Keyboard::F1:
 		{

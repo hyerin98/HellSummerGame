@@ -105,9 +105,6 @@
     <ClCompile Include="LobbyScene.cpp">
       <Filter>소스 파일\01. Scene\01. LobbyScene</Filter>
     </ClCompile>
-    <ClCompile Include="GamingScene.cpp">
-      <Filter>소스 파일\01. Scene\02. GamingScene</Filter>
-    </ClCompile>
     <ClCompile Include="ResultScene.cpp">
       <Filter>소스 파일\01. Scene\03. ResultScene</Filter>
     </ClCompile>
@@ -150,11 +147,17 @@
     <ClCompile Include="PracticeMap.cpp">
       <Filter>소스 파일\01. Scene\06. PracticeScene</Filter>
     </ClCompile>
-    <ClCompile Include="BulletManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Bullet.cpp">
       <Filter>소스 파일\03. Object\08. BulletObject</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletManager.cpp">
+      <Filter>소스 파일\03. Object\08. BulletObject</Filter>
+    </ClCompile>
+    <ClCompile Include="GamingScene1.cpp">
+      <Filter>소스 파일\01. Scene\02. GamingScene</Filter>
+    </ClCompile>
+    <ClCompile Include="GamingScene2.cpp">
+      <Filter>소스 파일\01. Scene\02. GamingScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -181,9 +184,6 @@
     </ClInclude>
     <ClInclude Include="LobbyScene.h">
       <Filter>소스 파일\01. Scene\01. LobbyScene</Filter>
-    </ClInclude>
-    <ClInclude Include="GamingScene.h">
-      <Filter>소스 파일\01. Scene\02. GamingScene</Filter>
     </ClInclude>
     <ClInclude Include="ResultScene.h">
       <Filter>소스 파일\01. Scene\03. ResultScene</Filter>
@@ -227,11 +227,17 @@
     <ClInclude Include="PracticeMap.h">
       <Filter>소스 파일\01. Scene\06. PracticeScene</Filter>
     </ClInclude>
-    <ClInclude Include="BulletManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Bullet.h">
       <Filter>소스 파일\03. Object\08. BulletObject</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletManager.h">
+      <Filter>소스 파일\03. Object\08. BulletObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GamingScene1.h">
+      <Filter>소스 파일\01. Scene\02. GamingScene</Filter>
+    </ClInclude>
+    <ClInclude Include="GamingScene2.h">
+      <Filter>소스 파일\01. Scene\02. GamingScene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

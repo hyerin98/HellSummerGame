@@ -1,6 +1,8 @@
 #pragma once
 #include "AnimationObject.h"
 
+class BulletManager;
+
 enum CHARACTER_STATE
 {
 	IDLE,
@@ -46,14 +48,15 @@ protected:
 	float speed = 15.f;
 	float gravity = 2.f;
 	int jumpCount = 2;
-
+	
 	int characterClass = PLAYER_BUBBLUN;
 	int characterState = MOVE_RIGHT;
 	int oldState = IDLE;
 
 private:
-
 	virtual void Init();
+
+	BulletManager* bulletMgr = nullptr;
 
 public:
 

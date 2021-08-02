@@ -4,7 +4,7 @@
 class StartScene : public Scene
 {
 public:
-	StartScene();
+	StartScene() = delete;
 	StartScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem);
 	~StartScene();
 

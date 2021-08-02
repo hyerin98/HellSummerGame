@@ -5,7 +5,7 @@ BulletManager::BulletManager(const size_t& bulletCount)
 {
 	for (auto i = 0; i < bulletCount; ++i)
 	{
-		bullets.push_back(new Bullet("Textures/Bullet.png"));
+		bullets.push_back(new Bullet("Textures/bubble.png"));
 	}
 
 	for (auto& bullet : bullets)

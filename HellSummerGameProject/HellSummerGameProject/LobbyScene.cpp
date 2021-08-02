@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "LobbyScene.h"
 #include "BackGroundObject.h"
-#include "GamingScene.h"
+#include "GamingScene1.h"
 
 LobbyScene::LobbyScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
 	:Scene(scenes, window, soundSystem)
@@ -35,7 +35,7 @@ void LobbyScene::Input(Event* e)
 	{
 	case Keyboard::Enter:
 	{
-		scenes->push(new GamingScene(scenes,window, soundSystem));
+		scenes->push(new GamingScene1(scenes,window, soundSystem));
 		break;
 	}
 	default:

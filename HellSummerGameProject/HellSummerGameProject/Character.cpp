@@ -1,5 +1,7 @@
 #include "framework.h"
 #include "Character.h"
+#include "BulletManager.h"
+#include "Object.h"
 
 Character::Character(int characterClass)
 {
@@ -79,7 +81,7 @@ void Character::Init()
 
 	setTexture(*move_rightAnimation.data()[1]);
 	setOrigin(Vector2f(getGlobalBounds().width / 2.f, getGlobalBounds().height));
-	setPosition(450.f, 575.f);
+	setPosition(600.f, 600.f);
 }
 
 void Character::Destroy()
@@ -94,6 +96,11 @@ void Character::Update(const float& deltaTime)
 	static float elapsedTime = 0.f;
 	elapsedTime += deltaTime;
 	MoveUpdate(deltaTime);
+
+	/*if (Keyboard::isKeyPressed(Keyboard::F))
+	{
+		bulletMgr->Shoot({  }, {getPosition()}, 200.f);
+	}*/
 
 	if (Keyboard::isKeyPressed(Keyboard::Space))
 	{
@@ -169,13 +176,14 @@ void Character::Jump()
 
 void Character::MoveUpdate(const float& deltaTime)
 {
-	if (position.y < 575.f)
+
+	if (position.y < 620.f)
 	{
 		velocity.y += gravity * speed * deltaTime;
 	}
-	else if (position.y > 575)
+	else if (position.y > 620)
 	{
-		position.y = 575;
+		position.y = 620;
 	}
 
 	velocity += acceleration * speed * deltaTime;
@@ -189,8 +197,6 @@ void Character::MoveUpdate(const float& deltaTime)
 void Character::Update(const Vector2f& mousePosition)
 {
 	AnimationObject::Update(mousePosition);
-
-	
 }
 
 void Character::Attack()

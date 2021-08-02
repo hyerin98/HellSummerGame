@@ -3,7 +3,7 @@
 class ResultScene : public Scene
 {
 public:
-	ResultScene();
+	ResultScene() = delete;
 	ResultScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem);
 	~ResultScene();
 private:

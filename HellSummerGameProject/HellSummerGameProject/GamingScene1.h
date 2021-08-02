@@ -6,18 +6,21 @@ class Monster1;
 class Monster2;
 class Monster3;
 class TileMap;
+class BulletManager;
 
-class GamingScene : public Scene
+class GamingScene1 : public Scene
 {
 public:
-	GamingScene() = delete;
-	GamingScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem);
-	virtual ~GamingScene() = default;
+	GamingScene1() = delete;
+	GamingScene1(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem);
+	virtual ~GamingScene1() = default;
 private:
 	Character* character = nullptr;
 	Monster1* monster1 = nullptr;
 	Monster2* monster2 = nullptr;
 	Monster3* monster3 = nullptr;
+	BulletManager* bulletMgr = nullptr;
+	Object* portal = nullptr;
 
 	// Map Variables
 

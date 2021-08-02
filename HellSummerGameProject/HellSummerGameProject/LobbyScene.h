@@ -3,7 +3,7 @@
 class LobbyScene : public Scene
 {
 public:
-	LobbyScene();
+	LobbyScene() = delete;
 	LobbyScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem);
 	~LobbyScene();
 
