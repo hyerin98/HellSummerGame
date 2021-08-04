@@ -66,6 +66,13 @@ Character::Character(int characterClass)
 		this->jump_leftAnimation.push_back(texture);
 	}
 
+	for (int i = 0; i < 8; i++)
+	{
+		texture = new Texture;
+		texture->loadFromFile(filePath + "DIE_0" + to_string(i) + fileType);
+		this->die_Animation.push_back(texture);
+	}
+
 	Init();
 }
 
@@ -97,11 +104,6 @@ void Character::Update(const float& deltaTime)
 	static float elapsedTime = 0.f;
 	elapsedTime += deltaTime;
 	MoveUpdate(deltaTime);
-
-	/*if (Keyboard::isKeyPressed(Keyboard::F))
-	{
-		bulletMgr->Shoot({  }, {getPosition()}, 200.f);
-	}*/
 
 	if (Keyboard::isKeyPressed(Keyboard::Space))
 	{

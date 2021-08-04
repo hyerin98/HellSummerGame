@@ -12,7 +12,7 @@ enum CHARACTER_STATE
 	JUMP_LEFT,
 	ATTACK_RIGHT,
 	ATTACK_LEFT,
-	DIE
+	DIE,
 };
 
 enum CHARACTER_CLASS
@@ -61,6 +61,8 @@ private:
 	BulletManager* bulletMgr = nullptr;
 
 public:
+
+	//virtual void Input(Event* event);
 
 	virtual void Destroy();
 

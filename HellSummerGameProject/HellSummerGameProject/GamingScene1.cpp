@@ -60,6 +60,10 @@ void GamingScene1::Input(Event* e)
 			EndScene();
 			break;
 		}
+		case Keyboard::F:
+		{
+			bulletMgr->Shoot({ 1.f, 0.f }, { character->getPosition() }, 200.f);
+		}
 		case Keyboard::F1:
 		{
 			soundSystem->VolumeDown();
@@ -75,8 +79,6 @@ void GamingScene1::Input(Event* e)
 		}
 		break;
 	}
-	default:
-		break;
 	}
 }
 
@@ -90,6 +92,7 @@ void GamingScene1::Update(const float& deltaTime)
 {
 	Scene::Update(deltaTime);
 	character->Update(deltaTime);
+	//bulletMgr->Update(deltaTime);
 	monster1->Update(deltaTime);
 	monster2->Update(deltaTime);
 	monster3->Update(deltaTime);
@@ -136,6 +139,11 @@ void GamingScene1::Render()
 	if (character)
 	{
 		character->Render(window);
+	}
+
+	if (bulletMgr)
+	{
+		bulletMgr->Render(window);
 	}
 
 	if (monster1)
